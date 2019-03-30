@@ -1,16 +1,22 @@
 #ifndef GAMES_LOGIC
 #define GAMES_LOGIC
 
+#include <vector>
 #include <string>
+#include "interfaces.hpp"
 #include "inifile.hpp"
 
 namespace games {
     class logic {
+        private:
+            unsigned int    logic_moves;
+            bool            logic_running;
+            std::vector <interfaces::triggerable> logic_commands;
+            std::string     logic_inputstring;
+
         protected:
             ini::inifile    logic_inifile;
             std::string     logic_script_path;
-            unsigned int    logic_moves;
-            bool            logic_running;
 
         public:
             explicit logic(const char* fp): logic_inifile(fp) {
