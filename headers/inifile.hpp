@@ -14,6 +14,7 @@ namespace ini {
     public:
         inifile();
         inifile(const std::string&);
+        inifile(const inifile&);
         ~inifile();
 
         void load(const std::string&);

@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include "graphics.hpp"
-
+/*
 void games::graphics::loadGraphicsElements(const std::string& filepath) {
     std::ifstream   data(filepath);
     std::string     line;
@@ -13,6 +13,7 @@ void games::graphics::loadGraphicsElements(const std::string& filepath) {
         temp = line.back();
         setGraphicsElement(i, temp);
         i++;
+        std::cout << temp << std::endl;
     }
 }
 
@@ -31,3 +32,4 @@ games::graphics::~graphics() {
 
     graphics_elements.clear();
 }
+*/

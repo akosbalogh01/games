@@ -4,17 +4,17 @@
 #include <vector>
 #include <string>
 #include "logic.hpp"
+#include "inifile.hpp"
 
-namespace games {
+namespace games {/*
     class graphics: games::logic {
         private:
             std::vector <char>  graphics_elements;
             unsigned int        graphics_elements_num;
             std::string         graphics_elements_filepath;
 
-
         public:
-            explicit graphics(const char* config_filepath): logic(config_filepath) {
+            explicit graphics(const char* config_filepath) {
                 graphics_elements_filepath = games::logic::logic_inifile.value("Graphics", "gfxdatabase");
                 graphics_elements_num = std::stoi(games::logic::logic_inifile.value("Graphics", "elementnum"));
                 std::cout << "Game Graphics constructor with config " << config_filepath << " from " << graphics_elements_filepath << " for " << graphics_elements_num << " elements" << std::endl;
@@ -31,6 +31,7 @@ namespace games {
 
             ~graphics();
     };
+    */
 };
 
 #endif // GAMES_GRAPHICS

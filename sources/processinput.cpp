@@ -3,13 +3,18 @@
 #include "logic.hpp"
 
 void games::logic::processInput() {
+    std::string input;
+    std::cout << ">> ";
+    std::cin  >> input;
 
-    for (const auto& cmd: logic_commands) {
-        if (cmd.interpret(logic_inputstring)) {
-            cmd.execute();
+
+    for (auto index: logic_commands) {
+        if (index.get()->trigger(input)) {
+            index.get()->execute();
             return;
         }
     }
+
 
     std::cout << "Invalid command." << std::endl;
 

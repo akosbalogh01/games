@@ -4,10 +4,15 @@
 #include <string>
 
 namespace interfaces {
+    class executable {
+        public:
+            virtual void execute() = 0;
+    };
+
     class triggerable {
         public:
-            virtual const bool interpret(const std::string&) const = 0;
-            virtual void execute() const = 0;
+            virtual bool trigger(const std::string&) = 0;
+            virtual void execute() = 0;
     };
 };
 

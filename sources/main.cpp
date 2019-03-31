@@ -4,13 +4,13 @@
 
 int main(const int argc, const char** argv) {
     games::logic    game(argv[1]);
-    games::graphics gfx(argv[1]);
+    //games::graphics gfx(argv[1]);
 
-
+    game.setRunning(true);
     while (game.isRunning()) {
         game.processInput();
-        game.nextMove();
-        gfx.display();
+        //game.nextMove();
+        //gfx.display();
     }
 
     return 0;

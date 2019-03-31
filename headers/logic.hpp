@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <memory>
 #include "interfaces.hpp"
 #include "inifile.hpp"
 
@@ -10,23 +11,17 @@ namespace games {
     class logic {
         private:
             unsigned int    logic_moves;
-            bool            logic_running;
-            std::vector <interfaces::triggerable> logic_commands;
-            std::string     logic_inputstring;
-
-        protected:
-            ini::inifile    logic_inifile;
+            bool            logic_running, logic_valid;
+            void            pushDefaultCommands();
+            std::vector <std::shared_ptr <interfaces::triggerable>> logic_commands;
+            std::shared_ptr <ini::inifile> logic_inifile;
             std::string     logic_script_path;
 
         public:
-            explicit logic(const char* fp): logic_inifile(fp) {
-                std::cout << "Game Logic constructor with config " << fp << std::endl;
-                logic_script_path   = fp;
-                logic_moves         = 0;
-                logic_running       = false;
-            }
+            logic();
+            logic(const char*);
 
-            virtual void        display() const {};
+            void                loadConfig(const std::string&);
             void                processInput();
             void                nextMove();
 

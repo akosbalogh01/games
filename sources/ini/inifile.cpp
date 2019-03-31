@@ -12,6 +12,10 @@ ini::inifile::inifile(const std::string& filepath) {
     load(filepath);
 }
 
+ini::inifile::inifile(const ini::inifile& other) {
+    load(other.filepath());
+}
+
 ini::inifile::~inifile() {
     save();
 }
