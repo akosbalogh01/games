@@ -5,7 +5,7 @@
 void games::logic::processInput() {
     std::string input;
     std::cout << ">> ";
-    std::cin  >> input;
+    std::getline(std::cin, input);
 
 
     for (auto index: logic_commands) {

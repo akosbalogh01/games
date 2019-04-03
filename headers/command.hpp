@@ -1,6 +1,7 @@
 #ifndef GAMES_COMMAND
 #define GAMES_COMMAND
 
+#include <iostream>
 #include <memory>
 #include <functional>
 #include <regex>
@@ -37,6 +38,7 @@ namespace games {
             std::string new_token;
 
             while (std::getline(sstream, new_token, ' ')) {
+                std::cout << new_token << std::endl;
                 cmd_argument_vector.push_back(new_token);
             }
         }
