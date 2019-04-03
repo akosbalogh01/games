@@ -14,6 +14,11 @@ namespace interfaces {
             virtual bool trigger(const std::string&) = 0;
             virtual void execute() = 0;
     };
+
+    class tile {
+        public:
+            virtual void render() const = 0;
+    };
 };
 
 #endif
