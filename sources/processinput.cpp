@@ -4,7 +4,7 @@
 
 void games::logic::processInput() {
     std::string input;
-    std::cout << ">> ";
+    std::cout << std::endl << std::endl << ">> ";
     std::getline(std::cin, input);
 
 

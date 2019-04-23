@@ -1,10 +1,11 @@
 #ifndef GAMES_TILE
 #define GAMES_TILE
 
+#include <iostream>
 #include "interfaces.hpp"
 
 namespace games {
-    class cosmetic: interfaces::tile {
+    class cosmetic: public interfaces::tile {
     private:
         char data;
     public:
@@ -14,7 +15,7 @@ namespace games {
         void setData(char param) {data = param;}
     };
 
-    class field: interfaces::tile {
+    class field: public interfaces::tile {
     private:
         bool valid;
         char current_data;
