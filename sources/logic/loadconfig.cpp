@@ -12,6 +12,9 @@ void games::logic::loadConfig(const std::string& filepath) {
     pushDefaultCommands();
     logic_gfx.loadRenderVector(logic_inifile.get()->value("Graphics", "table"));
     logic_gfx.loadCharacterVector(logic_inifile.get()->value("Graphics", "charmap"));
-    loadPawns(logic_inifile.get()->value("Game", "pawns"));
-    initPawns(logic_inifile.get()->value("Game", "initscript"));
+    logic_pawnman.setCharmap(logic_gfx.charmap());
+    logic_pawnman.loadPawns(logic_inifile.get()->value("Game", "pawns"));
+    logic_pawnman.initPawns(logic_inifile.get()->value("Game", "initscript"));
+
+    //logic_pawnman.initMoves(logic_inifile.get()->value("Game", "movescript"));
 }

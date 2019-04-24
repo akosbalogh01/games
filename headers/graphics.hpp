@@ -7,9 +7,10 @@
 #include "tile.hpp"
 #include "pawn.hpp"
 
-typedef std::vector <unsigned int> vec_field;
-typedef std::vector <std::shared_ptr <interfaces::tile>> vec_render;
-typedef std::vector <char> vec_char;
+typedef std::vector <unsigned int>                          vec_field;
+typedef std::vector <std::shared_ptr <interfaces::tile>>    vec_render;
+typedef std::vector <std::shared_ptr <games::pawn>>         vec_pawn;
+typedef std::shared_ptr <std::vector <char>>                vec_char;
 
 namespace games {
     class graphics {
@@ -19,13 +20,12 @@ namespace games {
             vec_char    gfx_charactervector;
 
         public:
-            void loadRenderVector(const std::string&);
-            void loadCharacterVector(const std::string&);
-            void render() const;
-            void update(const std::vector <std::shared_ptr <games::pawn>>&);
-            void reset();
-
-            char character(unsigned int) const;
+            void    loadRenderVector(const std::string&);
+            void    loadCharacterVector(const std::string&);
+            void    render() const;
+            void    update(const vec_pawn&);
+            void    reset();
+            const   vec_char& charmap() const;
     };
 };
 

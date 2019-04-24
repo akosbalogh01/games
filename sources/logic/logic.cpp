@@ -23,7 +23,7 @@ const bool games::logic::isRunning() const {
 }
 
 void games::logic::display() {
-    logic_gfx.update(logic_pawns);
+    logic_gfx.update(logic_pawnman.get());
     logic_gfx.render();
     logic_gfx.reset();
 }

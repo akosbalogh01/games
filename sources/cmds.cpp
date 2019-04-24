@@ -22,8 +22,11 @@ void games::logic::pushDefaultCommands() {
     std::function <void (games::logic*, std::string)> fload = loadConfig;
     std::shared_ptr <interfaces::triggerable> cmd_load = std::make_shared <games::argvcommand <games::logic, std::string>> (fload, games::argvindex(1));
     (dynamic_cast <games::command <games::logic, std::string>*> (cmd_load.get()))->setTarget(target_obj);
-    //(dynamic_cast <games::command <games::logic, std::string>*> (cmd_load.get()))->setArgument("lofasz");
+    //(dynamic_cast <games::command <games::logic, std::string>*> (cmd_load.get()))->setArgument("asdasd");
     (dynamic_cast <games::command <games::logic, std::string>*> (cmd_load.get()))->pushRegexpPattern("(load)(.*)");
     logic_commands.push_back(cmd_load);
 
+
+    //to do: more default commands here
+    //to do: custom scripted commands here
 }

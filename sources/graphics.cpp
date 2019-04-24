@@ -44,9 +44,10 @@ void games::graphics::loadCharacterVector(const std::string& filepath) {
     std::cout << "[i] Loading character vector from " << filepath << std::endl;
     std::ifstream   chartable(filepath);
     std::string     current_line;
+    gfx_charactervector = std::make_shared <std::vector <char>> ();
 
     while (std::getline(chartable, current_line)) {
-        gfx_charactervector.push_back(current_line.front());
+        gfx_charactervector.get()->push_back(current_line.front());
     }
 }
 
@@ -69,6 +70,6 @@ void games::graphics::reset() {
     }
 }
 
-char games::graphics::character(unsigned int index) const {
-    return gfx_charactervector[index];
+const vec_char& games::graphics::charmap() const {
+    return gfx_charactervector;
 }

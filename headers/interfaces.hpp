@@ -1,6 +1,5 @@
 #ifndef GAMES_INTERFACE
 #define GAMES_INTERFACE
-
 #include <string>
 
 namespace interfaces {
@@ -18,6 +17,11 @@ namespace interfaces {
     class tile {
         public:
             virtual void render() const = 0;
+    };
+
+    class conditional {
+        public:
+            virtual void evaluate() = 0;
     };
 };
 

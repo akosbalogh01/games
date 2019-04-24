@@ -2,9 +2,9 @@
 #include <fstream>
 #include <string>
 #include <memory>
-#include "logic.hpp"
+#include "pawnman.hpp"
 
-void games::logic::loadPawns(const std::string& filepath) {
+void games::pawnman::loadPawns(const std::string& filepath) {
     std::cout << "[i] Creating initial pawns from " << filepath << std::endl;
     unsigned int    new_pawn_index = 0;
     std::ifstream   pawncreate(filepath);
@@ -13,7 +13,7 @@ void games::logic::loadPawns(const std::string& filepath) {
 
     while(std::getline(pawncreate, current_line)) {
         if (new_pawn = createPawn(current_line, new_pawn_index)) {
-            logic_pawns.push_back(new_pawn);
+            pawn_vector.push_back(new_pawn);
             new_pawn_index++;
         }
     }
