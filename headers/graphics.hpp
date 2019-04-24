@@ -5,6 +5,7 @@
 #include <string>
 #include <memory>
 #include "tile.hpp"
+#include "pawn.hpp"
 
 typedef std::vector <unsigned int> vec_field;
 typedef std::vector <std::shared_ptr <interfaces::tile>> vec_render;
@@ -21,6 +22,8 @@ namespace games {
             void loadRenderVector(const std::string&);
             void loadCharacterVector(const std::string&);
             void render() const;
+            void update(const std::vector <std::shared_ptr <games::pawn>>&);
+            void reset();
 
             char character(unsigned int) const;
     };

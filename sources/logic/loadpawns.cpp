@@ -5,7 +5,7 @@
 #include "logic.hpp"
 
 void games::logic::loadPawns(const std::string& filepath) {
-    std::cout << "[i] Loading initial pawns from " << filepath << std::endl;
+    std::cout << "[i] Creating initial pawns from " << filepath << std::endl;
     unsigned int    new_pawn_index = 0;
     std::ifstream   pawncreate(filepath);
     std::string     current_line;

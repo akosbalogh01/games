@@ -26,3 +26,16 @@ void games::pawn::setOwnerID(const unsigned int id) {
 void games::pawn::setCharacter(const char param) {
     pawn_char = param;
 }
+
+void games::pawn::setPos(const games::vec2d& param) {
+    pawn_pos.setX(param.x());
+    pawn_pos.setY(param.y());
+}
+
+unsigned int games::pawn::pos1D() const {
+    return pawn_pos.y() * 8 + pawn_pos.x();
+}
+
+
+
+

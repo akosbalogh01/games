@@ -1,6 +1,5 @@
 #ifndef GAMES_LOGIC
 #define GAMES_LOGIC
-
 #include <vector>
 #include <string>
 #include <memory>
@@ -32,7 +31,10 @@ namespace games {
             void                nextMove();
             void                display();
             void                loadPawns(const std::string&);
+            void                initPawns(const std::string&);
+            void                setPawnPos(const unsigned int, const games::vec2d&);
             std::shared_ptr <games::pawn> createPawn(const std::string&, const unsigned int);
+
 
             void                setRunning(const bool);
 
