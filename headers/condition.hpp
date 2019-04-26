@@ -1,6 +1,7 @@
 #ifndef GAMES_CONDITION
 #define GAMES_CONDITION
 #include <functional>
+#include <string>
 #include "interfaces.hpp"
 
 namespace games {
@@ -30,6 +31,7 @@ namespace games {
 
             void bind(const std::function <bool (compare_type, compare_type)>& param) {comparation = param;}
 
+            bool build(const std::string&);
     };
 };
 

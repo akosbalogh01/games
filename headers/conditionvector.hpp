@@ -5,7 +5,7 @@
 #include "condition.hpp"
 
 namespace games {
-    class conditionvector: public interfaces::conditional {
+    class condvector: public interfaces::conditional {
     private:
         std::vector <interfaces::conditional*> vec;
 
