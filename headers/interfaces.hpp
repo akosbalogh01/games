@@ -21,7 +21,7 @@ namespace interfaces {
 
     class conditional {
         public:
-            virtual bool evaluate() const = 0;
+            virtual bool evaluate() = 0;
     };
 };
 
