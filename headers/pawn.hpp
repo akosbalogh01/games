@@ -12,6 +12,7 @@ namespace games {
         games::vec2d                pawn_pos;
         std::vector <games::vec2d>  pawn_moveset;
         char                        pawn_char;
+        unsigned int                pawn_type;
         unsigned int                owner_id;
 
     public:
@@ -21,6 +22,7 @@ namespace games {
         // Member functions
         const unsigned int id() const {return pawn_id;}
         const char character() const {return pawn_char;}
+        const unsigned int getType() {return pawn_type;}
 
         bool valid_move(const games::vec2d&);
         void pushMove(const games::vec2d&);
@@ -29,6 +31,7 @@ namespace games {
         void setCharacter(const char);
         void setPos(const games::vec2d&);
         unsigned int pos1D() const;
+        void setType(const unsigned int);
     };
 };
 

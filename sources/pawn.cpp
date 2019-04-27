@@ -27,6 +27,10 @@ void games::pawn::setCharacter(const char param) {
     pawn_char = param;
 }
 
+void games::pawn::setType(const unsigned int param) {
+    pawn_type = param;
+}
+
 void games::pawn::setPos(const games::vec2d& param) {
     pawn_pos.setX(param.x());
     pawn_pos.setY(param.y());

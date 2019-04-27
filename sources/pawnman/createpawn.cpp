@@ -9,6 +9,7 @@ pPawn games::pawnman::createPawn(const std::string& current_line, unsigned int c
         std::shared_ptr <games::pawn> new_pawn = std::make_shared <games::pawn> (current_index);
         new_pawn.get()->setOwnerID(std::stoi(match[2]));
         new_pawn.get()->setCharacter(getChar(std::stoi(match[4])));
+        new_pawn.get()->setType(std::stoi(match[4]));
 
         return new_pawn;
     }

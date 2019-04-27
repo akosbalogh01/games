@@ -29,7 +29,7 @@ namespace games {
             //void    setPawnType()
 
             //getPawnPos
-            //getPawnType
+            unsigned int getPawnType(unsigned int);
     };
 };
 

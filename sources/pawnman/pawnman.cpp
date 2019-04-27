@@ -11,3 +11,7 @@ void games::pawnman::setCharmap(const charvec& charvecp) {
 const pawnvec& games::pawnman::get() {
     return pawn_vector;
 }
+
+unsigned int games::pawnman::getPawnType(unsigned int index) {
+    return pawn_vector[index].get()->getType();
+}

@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include <memory>
+#include <functional>
 #include "interfaces.hpp"
 #include "inifile.hpp"
 #include "graphics.hpp"
@@ -29,7 +30,7 @@ namespace games {
             logic();
             logic(const char*);
 
-            static std::map <std::string, int> logic_condmap;
+            static std::map <std::string, std::function <unsigned int (unsigned int)>> logic_condmap;
 
             void                loadConfig(const std::string&);
             void                processInput();
