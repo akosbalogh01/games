@@ -4,13 +4,13 @@
 #include <map>
 #include <string>
 #include <memory>
-#include <functional>
 #include "interfaces.hpp"
 #include "inifile.hpp"
 #include "graphics.hpp"
 #include "pawnman.hpp"
 
 typedef std::vector <std::shared_ptr <interfaces::triggerable>> cmdvector;
+typedef std::shared_ptr <interfaces::callable> callable;
 
 namespace games {
     class logic {
@@ -24,13 +24,13 @@ namespace games {
             games::pawnman  logic_pawnman;
 
             void            pushDefaultCommands();
-            void            loadConditionMap();
+            void            loadFunctionMap();
 
         public:
             logic();
             logic(const char*);
 
-            static std::map <std::string, std::function <unsigned int (unsigned int)>> logic_condmap;
+            static std::map <std::string, callable> logic_funcmap;
 
             void                loadConfig(const std::string&);
             void                processInput();

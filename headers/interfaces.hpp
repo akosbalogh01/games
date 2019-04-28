@@ -23,6 +23,11 @@ namespace interfaces {
         public:
             virtual bool evaluate() = 0;
     };
+
+    class callable {
+        public:
+            virtual const std::string key() = 0;
+    };
 };
 
 #endif

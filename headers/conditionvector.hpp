@@ -1,5 +1,6 @@
 #ifndef GAMES_CONDITION_VECTOR
 #define GAMES_CONDITION_VECTOR
+#include <string>
 #include <vector>
 #include "interfaces.hpp"
 #include "condition.hpp"
@@ -10,7 +11,7 @@ namespace games {
         std::vector <interfaces::conditional*> vec;
 
     public:
-        void
+        bool build(const std::string&);
 
         bool evaluate() const;
     };
