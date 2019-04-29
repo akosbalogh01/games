@@ -8,6 +8,7 @@
 #include "graphics.hpp"
 #include "pawnman.hpp"
 #include "mapman.hpp"
+#include "initman.hpp"
 
 typedef std::vector <std::shared_ptr <interfaces::triggerable>> cmdvector;
 
@@ -22,6 +23,7 @@ namespace games {
             std::string         logic_script_path;
             games::graphics     logic_gfx;
             games::pawnman      logic_pawnman;
+            games::initman      logic_initman;
             const games::mapman logic_mapman;
 
             void            pushDefaultCommands();
