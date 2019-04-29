@@ -1,16 +1,16 @@
 #include <map>
 #include <string>
 #include "statfunc.hpp"
-#include "function.hpp"
+#include "instruction.hpp"
 #include "mapman.hpp"
 #include "logic.hpp"
 
-std::map <std::string, games::function <bool>> games::mapman::funcmap;
+std::map <std::string, games::instruction> games::mapman::funcmap;
 
 void games::mapman::init_funcmap() {
     games::logic* origin = (games::logic*) core;
 
-    funcmap["CREATEPAWN"] = games::function <bool> (membmap["PAWNMAN"], std::function <bool (void*, std::string)> (games::statfunc::createpawn));
+    funcmap["CREATEPAWN"] = games::instruction(membmap["PAWNMAN"], std::function <bool (void*, std::string)> (games::statfunc::createpawn));
 }
 
 /*
