@@ -1,10 +1,12 @@
 #include <map>
 #include <string>
 #include "mapman.hpp"
+#include "logic.hpp"
 
 std::map <std::string, void*> games::mapman::funcmap;
 
 void games::mapman::init_funcmap() {
+    games::logic* origin = (games::logic*) core;
 
 }
 

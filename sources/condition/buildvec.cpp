@@ -6,7 +6,7 @@
 #include "interfaces.hpp"
 #include "logic.hpp"
 #include "conditionvector.hpp"
-
+/*
 typedef enum {EQ, LS, LE, GR, GE, NA} relation;
 inline relation deduce_relation(const std::string&);
 
@@ -66,3 +66,4 @@ inline relation deduce_relation(const std::string& input) {
 
 
 
+*/

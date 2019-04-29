@@ -1,7 +1,6 @@
 #ifndef GAMES_LOGIC
 #define GAMES_LOGIC
 #include <vector>
-#include <map>
 #include <string>
 #include <memory>
 #include "interfaces.hpp"
@@ -11,10 +10,10 @@
 #include "mapman.hpp"
 
 typedef std::vector <std::shared_ptr <interfaces::triggerable>> cmdvector;
-typedef std::shared_ptr <interfaces::callable> callable;
 
 namespace games {
     class logic {
+        friend class games::mapman;
         private:
             unsigned int        logic_moves;
             bool                logic_running, logic_valid;
@@ -26,7 +25,6 @@ namespace games {
             const games::mapman logic_mapman;
 
             void            pushDefaultCommands();
-            void            loadFunctionMap();
 
         public:
             logic(): logic_mapman(this) {
