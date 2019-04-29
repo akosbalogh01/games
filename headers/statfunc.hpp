@@ -4,7 +4,7 @@
 
 namespace games {
     namespace statfunc {
-
+        bool createpawn(void*, const std::string&);
     };
 };
 

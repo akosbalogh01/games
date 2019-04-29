@@ -2,6 +2,7 @@
 #define GAMES_MAPMAN
 #include <string>
 #include <map>
+#include "function.hpp"
 
 namespace games {
     class mapman {
@@ -18,7 +19,7 @@ namespace games {
             init_funcmap();
         }
 
-        static std::map <std::string, void*>    funcmap;
+        static std::map <std::string, games::function <bool>>    funcmap;
         static std::map <std::string, void*>    membmap;
         static std::map <std::string, void*>    vectmap;
     };

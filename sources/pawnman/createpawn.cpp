@@ -1,18 +1,19 @@
 #include <regex>
 #include <memory>
 #include <string>
+#include "pawn.hpp"
 #include "pawnman.hpp"
 
-pPawn games::pawnman::createPawn(const std::string& current_line, unsigned int current_index) {
-    std::smatch match;
-    if (std::regex_match(current_line, match, std::regex("(CREATEPAWN\\[)(\\d+)(,\\s+)(\\d+)(\\];)"))) {
-        std::shared_ptr <games::pawn> new_pawn = std::make_shared <games::pawn> (current_index);
-        new_pawn.get()->setOwnerID(std::stoi(match[2]));
-        new_pawn.get()->setCharacter(getChar(std::stoi(match[4])));
-        new_pawn.get()->setType(std::stoi(match[4]));
-
-        return new_pawn;
+bool games::pawnman::createPawn(unsigned int owner_id, unsigned int type_id) {
+    std::shared_ptr <games::pawn> new_pawn = std::make_shared <games::pawn> (pawn_index);
+    if (new_pawn != nullptr) {
+        new_pawn.get()->setOwnerID(owner_id);
+        new_pawn.get()->setType(type_id);
+        new_pawn.get()->setCharacter(getChar(type_id));
+        pawn_index++;
+        pawn_vector.push_back(new_pawn);
+        return true;
     }
 
-    return nullptr;
+    return false;
 }

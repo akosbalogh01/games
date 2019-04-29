@@ -16,8 +16,10 @@ namespace games {
             charvec pawn_charmap;
 
         public:
-            pPawn   createPawn(const std::string&, const unsigned int);
-            void    loadPawns(const std::string&);
+            static unsigned int pawn_index;
+
+            bool    createPawn(unsigned int, unsigned int);
+            //void    loadPawns(const std::string&);
             void    initPawns(const std::string&);
 
 

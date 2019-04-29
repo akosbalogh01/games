@@ -1,5 +1,7 @@
 #include "pawnman.hpp"
 
+unsigned int games::pawnman::pawn_index = 0;
+
 char games::pawnman::getChar(const unsigned int index) const {
     return pawn_charmap.get()->at(index);
 }
