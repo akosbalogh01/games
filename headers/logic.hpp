@@ -8,6 +8,7 @@
 #include "inifile.hpp"
 #include "graphics.hpp"
 #include "pawnman.hpp"
+#include "mapman.hpp"
 
 typedef std::vector <std::shared_ptr <interfaces::triggerable>> cmdvector;
 typedef std::shared_ptr <interfaces::callable> callable;
@@ -15,22 +16,27 @@ typedef std::shared_ptr <interfaces::callable> callable;
 namespace games {
     class logic {
         private:
-            unsigned int    logic_moves;
-            bool            logic_running, logic_valid;
-            cmdvector       logic_commands;
-            ini::inifile    logic_inifile;
-            std::string     logic_script_path;
-            games::graphics logic_gfx;
-            games::pawnman  logic_pawnman;
+            unsigned int        logic_moves;
+            bool                logic_running, logic_valid;
+            cmdvector           logic_commands;
+            ini::inifile        logic_inifile;
+            std::string         logic_script_path;
+            games::graphics     logic_gfx;
+            games::pawnman      logic_pawnman;
+            const games::mapman logic_mapman;
 
             void            pushDefaultCommands();
             void            loadFunctionMap();
 
         public:
-            logic();
-            logic(const char*);
+            logic(): logic_mapman(this) {
+                logic_running = logic_valid = false;
+            }
 
-            static std::map <std::string, callable> logic_funcmap;
+            logic(const char* filepath): logic_mapman(this) {
+                logic_running = logic_valid = false;
+                loadConfig(filepath);
+            }
 
             void                loadConfig(const std::string&);
             void                processInput();

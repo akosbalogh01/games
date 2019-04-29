@@ -1,20 +1,14 @@
-#include <functional>
 #include <map>
 #include <string>
-#include "interfaces.hpp"
-#include "logic.hpp"
-#include "pawnman.hpp"
-#include "callable.hpp"
-#include "vector2d.hpp"
+#include "mapman.hpp"
 
-std::map <std::string, callable> games::logic::logic_funcmap;
+std::map <std::string, void*> games::mapman::funcmap;
 
-void writeConsole(const std::string param) {
-    std::cout << "[i] " << param << std::endl;
+void games::mapman::init_funcmap() {
+
 }
 
-
-void games::logic::loadFunctionMap() {
+/*
     std::function <void (const std::string)> echofun = &writeConsole;
     std::shared_ptr <interfaces::callable> echo = std::make_shared <games::call1arg <void, std::string>> (echofun);
     (dynamic_cast <games::call1arg <void, std::string>*> (echo.get()))->bind("WRITECONSOLE");
@@ -34,4 +28,4 @@ void games::logic::loadFunctionMap() {
     std::shared_ptr <interfaces::callable> setpawnpos = std::make_shared <games::call3arg <void, games::pawnman*, unsigned int, games::vec2d>> (pawnposfun);
     (dynamic_cast <games::call3arg <void, games::pawnman*, unsigned int, games::vec2d>*> (setpawnpos.get()))->bind("SETPAWNPOS");
     logic_funcmap["SETPAWNPOS"] = setpawnpos;
-}
+*/

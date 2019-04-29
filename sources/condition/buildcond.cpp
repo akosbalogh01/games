@@ -2,7 +2,7 @@
 #include <regex>
 #include "condition.hpp"
 #include "logic.hpp"
-
+/*
 const std::string regpattern = "(CONDITION\\()((?:[A-Z][A-Z]+))(\\s+)(..)(\\s+)(.*?)(\\))";
 
 template <class compare_type>
@@ -25,3 +25,4 @@ bool games::condition <compare_type>::build(const std::string& input) {
 
     return false;
 }
+*/

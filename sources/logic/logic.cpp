@@ -1,6 +1,7 @@
 #include <string>
 #include "logic.hpp"
 
+/*
 games::logic::logic() {
     logic_running = logic_valid = false;
 }
@@ -9,6 +10,7 @@ games::logic::logic(const char* filepath) {
     logic_running = logic_valid = false;
     loadConfig(filepath);
 }
+*/
 
 void games::logic::setRunning(const bool param) {
     logic_running = param;

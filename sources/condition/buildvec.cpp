@@ -28,18 +28,22 @@ bool games::condvector::build(const std::string& input) {
             if (std::regex_match(index, match, std::regex("(CONDITION\\()((?:[A-Z][A-Z]+))(\\s+)(..)(\\s+)(.*?)(\\))"))) {
                 auto search = games::logic::logic_funcmap.find(match[2]);
                 if (search != games::logic::logic_funcmap.end()) {
+                    std::shared_ptr <interfaces::callable> new_cond_func = games::logic::logic_funcmap[match[2]];
 
-                    return true;
                 }
                 else {
                     std::cout << "[e] Error building condition from line " << index << std::endl;
                     std::cout << "[e] Unkown key '" << match[2] << "'" << std::endl;
+                    return false;
                 }
             }
             else {
                 std::cout << "[e] Unmatched regular expression to build condition " << index << std::endl;
+                return false;
             }
         }
+
+        return true;
     }
     else {
         std::cout << "[e] Unmatched regular expression to build conditionvector." << std::endl;
