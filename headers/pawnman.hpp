@@ -23,7 +23,7 @@ namespace games {
             void    initPawns(const std::string&);
 
 
-            void    setPawnPos(const unsigned int, const games::vec2d&);
+            bool    setPawnPos(const unsigned int, const games::vec2d&);
             void    setCharmap(const charvec&);
             char    getChar(const unsigned int) const;
 

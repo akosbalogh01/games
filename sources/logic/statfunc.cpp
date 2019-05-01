@@ -3,10 +3,11 @@
 #include "statfunc.hpp"
 #include "logic.hpp"
 #include "pawnman.hpp"
+#include "vector2d.hpp"
 
-bool games::statfunc::createpawn(void* target, const std::string& input) {
+bool games::statfunc::createpawn(void* target, const std::string& input, void* unused) {
     std::smatch match;
-    if (std::regex_match(input, match, std::regex("(CREATEPAWN)(\\[)(\\d+)(,\\s+)(\\d+)(\\];)"))) {
+    if (std::regex_match(input, match, std::regex("(CREATEPAWN\\[)(\\d+)(,\\s+)(\\d+)(\\];)"))) {
         games::pawnman* origin = (games::pawnman*) target;
         if (origin->createPawn(std::stoi(match[2]), std::stoi(match[4]))) {
             std::cout << "[i] Created pawn[" << games::pawnman::pawn_index - 1 << "]" << std::endl;
@@ -18,6 +19,36 @@ bool games::statfunc::createpawn(void* target, const std::string& input) {
     }
     else {
         std::cout << "[e] Unmatched regular expression to create pawn " << input << std::endl;
+    }
+
+    return false;
+}
+
+bool games::statfunc::setpawnpos(void* target, const std::string& input, void* unused) {
+    std::smatch match;
+    if (std::regex_match(input, match, std::regex("(SETPAWNPOS\\[)(\\d+)(,\\s+\\[)(\\d+)(,\\s+)(\\d+)(\\]\\];)"))) {
+        games::pawnman* origin = (games::pawnman*) target;
+        if (origin->setPawnPos(std::stoi(match[2]), games::vec2d(std::stoi(match[4]), std::stoi(match[6])))) {
+            std::cout << "[i] Modified pawn[" << match[2] << "] position" << std::endl;
+            return true;
+        }
+        else {
+            std::cout << "[e] Failed to modify pawn[" << match[2] << "] position" << std::endl;
+        }
+    }
+    else {
+        std::cout << "[e] Unmatched regular expression to set pawn position " << input << std::endl;
+    }
+
+    return false;
+}
+
+bool games::statfunc::returnconst(void* unused, const std::string& input, void* result) {
+    std::smatch match;
+    if (std::regex_match(input, match, std::regex("(.*?)(\\d+)(.*?)"))) {
+        int* target = (int*) result;
+        *target = std::stoi(match[2]);
+        return true;
     }
 
     return false;

@@ -3,6 +3,7 @@
 #include <iostream>
 #include "initman.hpp"
 #include "mapman.hpp"
+#include "instruction.hpp"
 
 /*
 SETPAWNPOS[];
@@ -20,7 +21,9 @@ bool games::initman::loadInitScript(const std::string& filepath) {
         else {
             if (std::regex_match(current_line, match, std::regex("(.*?)(\\[)(.*?)"))) {
                 std::cout << current_line << std::endl;
-                auto new_thing = games::mapman::funcmap[match[1]];
+                std::shared_ptr <games::instruction> new_instruction = std::make_shared <games::instruction> (games::mapman::membmap["PAWNMAN"], games::mapman::funcmap[match[1]].get());
+                new_instruction.get()->setArgs(current_line);
+                vinstvector.add(new_instruction);
             }
         }
     }
