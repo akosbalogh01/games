@@ -13,7 +13,10 @@ namespace games {
         insvect data;
 
     public:
+        instrvector();
+        instrvector(const games::instruction);
         void add(const std::shared_ptr <games::instruction>&);
+        void add(const insvect&);
 
         void pop(unsigned int);
         void execute();

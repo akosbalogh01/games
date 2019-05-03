@@ -1,6 +1,7 @@
 #include <regex>
 #include <fstream>
 #include <iostream>
+#include "scriptman.hpp"
 #include "initman.hpp"
 #include "mapman.hpp"
 #include "instruction.hpp"
@@ -12,6 +13,12 @@ CREATEPAWN[];
 
 bool games::initman::loadInitScript(const std::string& filepath) {
     std::cout << "[i] Generating init script from " << filepath << ':' << std::endl;
+    vinitscript = games::scriptman::lexer(filepath);
+    vinstvector = games::scriptman::parser(vinitscript);
+}
+
+/*
+std::cout << "[i] Generating init script from " << filepath << ':' << std::endl;
     std::ifstream initscript(filepath);
     std::string   current_line;
     std::smatch   match;
@@ -29,4 +36,4 @@ bool games::initman::loadInitScript(const std::string& filepath) {
     }
 
     return true;
-}
+*/
