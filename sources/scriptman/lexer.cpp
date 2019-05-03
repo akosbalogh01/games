@@ -9,7 +9,6 @@ const lexvec games::scriptman::lexer(const std::string& filepath) {
     lexvec       target;
     std::string  current_line;
     std::fstream input(filepath);
-    unsigned int pos;
 
     while (std::getline(input, current_line)) {
         current_line = remove_comments(current_line);

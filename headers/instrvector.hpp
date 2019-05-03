@@ -16,7 +16,7 @@ namespace games {
         instrvector();
         instrvector(const games::instruction);
         void add(const std::shared_ptr <games::instruction>&);
-        void add(const insvect&);
+        void add(const games::instrvector&);
 
         void pop(unsigned int);
         void execute();

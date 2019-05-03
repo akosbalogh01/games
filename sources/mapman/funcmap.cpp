@@ -8,7 +8,7 @@
 std::map <std::string, games::instrvector> games::mapman::funcmap;
 
 void games::mapman::init_funcmap() {
-    games::logic* origin = (games::logic*) core;
+    //games::logic* origin = (games::logic*) core;
 
     funcmap["CREATEPAWN"] = games::instrvector(games::instruction(membmap["PAWNMAN"], std::function <bool (void*, std::string, void*)> (games::statfunc::createpawn)));
     funcmap["SETPAWNPOS"] = games::instrvector(games::instruction(membmap["PAWNMAN"], std::function <bool (void*, std::string, void*)> (games::statfunc::setpawnpos)));

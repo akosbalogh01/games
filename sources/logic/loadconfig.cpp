@@ -1,5 +1,6 @@
 #include <iostream>
 #include "logic.hpp"
+#include "instrvector.hpp"
 
 void games::logic::loadConfig(const std::string& filepath) {
     if (logic_valid) return;
@@ -17,6 +18,7 @@ void games::logic::loadConfig(const std::string& filepath) {
     //logic_pawnman.initPawns(logic_inifile.value("Game", "initscript"));
 
     //logic_pawnman.initMoves(logic_inifile.get()->value("Game", "movescript"));
-    //logic_initman.loadInitScript(logic_inifile.value("Game", "initscript"));
+    logic_initman.loadInitScript(logic_inifile.value("Game", "initscript"));
+    //logic_mapman.funcmap["INIT"].execute();
     //logic_initman.init();
 }

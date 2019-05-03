@@ -5,6 +5,6 @@
 std::map <std::string, void*> games::mapman::vectmap;
 
 void games::mapman::init_vectmap() {
-    games::logic* origin = (games::logic*) core;
+    //games::logic* origin = (games::logic*) core;
 
 }

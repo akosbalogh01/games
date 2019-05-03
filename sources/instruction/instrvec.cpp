@@ -13,8 +13,8 @@ void games::instrvector::add(const std::shared_ptr <games::instruction>& param) 
     data.push_back(param);
 }
 
-void games::instrvector::add(const insvect& param) {
-    for (auto const index: param) {
+void games::instrvector::add(const games::instrvector& param) {
+    for (auto const index: param.data) {
         data.push_back(index);
     }
 }

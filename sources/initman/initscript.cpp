@@ -13,8 +13,11 @@ CREATEPAWN[];
 
 bool games::initman::loadInitScript(const std::string& filepath) {
     std::cout << "[i] Generating init script from " << filepath << ':' << std::endl;
+    games::mapman::funcmap["INIT"] = games::instrvector();
     vinitscript = games::scriptman::lexer(filepath);
     vinstvector = games::scriptman::parser(vinitscript);
+    games::mapman::funcmap["INIT"].add(vinstvector);
+    return true;
 }
 
 /*
