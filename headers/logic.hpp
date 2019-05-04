@@ -29,8 +29,9 @@ namespace games {
             void            pushDefaultCommands();
 
         public:
+            logic(const logic&) = delete;
             logic(): logic_mapman(this) {
-                logic_running = logic_valid = false;
+                logic_running = logic_valid = true;
             }
 
             logic(const char* filepath): logic_mapman(this) {

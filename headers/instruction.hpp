@@ -2,6 +2,7 @@
 #define GAMES_INSTRUCTION
 #include <string>
 #include <memory>
+#include <iostream>
 #include <functional>
 #include "interfaces.hpp"
 

@@ -6,6 +6,8 @@ namespace games {
     namespace statfunc {
         bool parsedefvar(void*, const std::string&, void*);
         bool parsedeffun(void*, const std::string&, void*);
+        bool writeconsole(void*, const std::string&, void*);
+        bool exit(void*, const std::string&, void*);
 
         bool createpawn(void*, const std::string&, void*);
         bool setpawnpos(void*, const std::string&, void*);

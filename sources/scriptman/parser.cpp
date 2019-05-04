@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <map>
 #include <regex>
 #include <string>
@@ -48,6 +49,7 @@ const games::instrvector games::scriptman::parser(const lexvec& input) {
         case ERR:
         default:
             std::cout << "[e] Fatal error: unparsable line " << index << std::endl;
+            assert(0);
             return games::instrvector();
         }
     }
@@ -79,16 +81,22 @@ const std::shared_ptr <games::instrvector> parse_label(const std::string& line) 
 const std::shared_ptr <games::instruction> parse_instr(void* object, const std::string& line) {
     std::smatch match;
     if (std::regex_match(line, match, std::regex("(.*?)(\\[)(.*?)(\\];)"))) {
-        auto new_instruction = std::make_shared <games::instruction>(object, games::mapman::funcmap[match[1]].get());
-        new_instruction.get()->setArgs(line);
-        return new_instruction;
+        auto search = games::mapman::funcmap.find(match[1]);
+        if (search != games::mapman::funcmap.end()) {
+            auto new_instruction = std::make_shared <games::instruction>(games::mapman::funcmap[match[1]]);
+            if (new_instruction.get()->object() == nullptr) new_instruction.get()->setObject(object);
+            new_instruction.get()->setArgs(line);
+            return new_instruction;
+        }
+        else {
+            std::cout << "[e] Fatal error: unparsable line " << line << std::endl;
+            std::cout << "[e] Unknown instruction '" << match[1] << "'" << std::endl;
+            assert(0);
+        }
     }
 
     return nullptr;
 }
-
-
-
 
 
 
