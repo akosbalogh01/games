@@ -10,6 +10,17 @@ namespace games {
         bool createpawn(void*, const std::string&, void*);
         bool setpawnpos(void*, const std::string&, void*);
         bool returnconst(void*, const std::string&, void*);
+        bool assignvalue(void*, const std::string&, void*);
+
+        namespace math {
+            bool add(void*, const std::string&, void*);
+            bool sub(void*, const std::string&, void*);
+            bool increment(void*, const std::string&, void*);
+            bool decrement(void*, const std::string&, void*);
+            bool multiply(void*, const std::string&, void*);
+            bool divide(void*, const std::string&, void*);
+            bool modulo(void*, const std::string&, void*);
+        };
     };
 };
 

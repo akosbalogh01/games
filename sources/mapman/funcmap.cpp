@@ -15,4 +15,12 @@ void games::mapman::init_funcmap() {
 
     funcmap["CREATEPAWN"] = games::instruction(membmap["PAWNMAN"], funtype (games::statfunc::createpawn));
     funcmap["SETPAWNPOS"] = games::instruction(membmap["PAWNMAN"], funtype (games::statfunc::setpawnpos));
+
+    funcmap["ADD"]        = games::instruction(nullptr, funtype (games::statfunc::math::add));
+    funcmap["SUB"]        = games::instruction(nullptr, funtype (games::statfunc::math::sub));
+    funcmap["INCREMENT"]  = games::instruction(nullptr, funtype (games::statfunc::math::increment));
+    funcmap["DECREMENT"]  = games::instruction(nullptr, funtype (games::statfunc::math::decrement));
+    funcmap["MULTIPLY"]   = games::instruction(nullptr, funtype (games::statfunc::math::multiply));
+    funcmap["DIVIDE"]     = games::instruction(nullptr, funtype (games::statfunc::math::divide));
+    funcmap["MODULO"]     = games::instruction(nullptr, funtype (games::statfunc::math::modulo));
 }
