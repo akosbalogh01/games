@@ -5,7 +5,7 @@
 #include "interfaces.hpp"
 #include "instruction.hpp"
 
-typedef std::vector <std::shared_ptr <games::instruction>> insvect;
+typedef std::vector <std::shared_ptr <interfaces::executable>> insvect;
 
 namespace games {
     class instrvector: public interfaces::executable {
@@ -15,11 +15,19 @@ namespace games {
     public:
         instrvector();
         instrvector(const games::instruction);
-        void add(const std::shared_ptr <games::instruction>&);
-        void add(const games::instrvector&);
+        void add(const std::shared_ptr <interfaces::executable>&);
 
         void pop(unsigned int);
         void execute();
+        unsigned int size();
+
+        /*
+        const instrvector operator= (const instrvector& p) {
+            instrvector temp;
+            temp.data = p.data;
+            return temp;
+        }
+        */
     };
 };
 

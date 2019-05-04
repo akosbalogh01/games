@@ -3,38 +3,42 @@
 #include <functional>
 #include "instruction.hpp"
 
-void games::instruction::execute() {
+games::instruction::instruction(const games::instruction& p2) {
+    this->vobject = p2.vobject;
+    this->vtarget = p2.vtarget;
+    this->vargs   = p2.vargs;
+    this->vresult = p2.vresult;
+}
 
-    if (target_(object_, args_, result_)) {
+void games::instruction::execute() {
+    if (vtarget(vobject, vargs, vresult)) {
         std::cout << "[i] Execution successful." << std::endl;
     }
     else {
         std::cout << "[i] Execution failed." << std::endl;
     }
-
-    return;
 }
 
 void games::instruction::setObject(void* param) {
-    object_ = param;
+    vobject = param;
 }
 
 void games::instruction::setArgs(const std::string& param) {
-    args_ = param;
+    vargs = param;
 }
 
 void games::instruction::bind(const std::function <bool (void*, std::string, void*)>& param) {
-    target_ = param;
+    vtarget = param;
 }
 
 void* games::instruction::object() {
-    return object_;
+    return vobject;
 }
 
 const std::string games::instruction::args() {
-    return args_;
+    return vargs;
 }
 
 const std::function <bool (void*, std::string, void*)> games::instruction::get() {
-    return target_;
+    return vtarget;
 }

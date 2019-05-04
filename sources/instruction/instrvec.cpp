@@ -9,18 +9,16 @@ games::instrvector::instrvector(const games::instruction param) {
     data.push_back(new_instr);
 }
 
-void games::instrvector::add(const std::shared_ptr <games::instruction>& param) {
+void games::instrvector::add(const std::shared_ptr <interfaces::executable>& param) {
     data.push_back(param);
-}
-
-void games::instrvector::add(const games::instrvector& param) {
-    for (auto const index: param.data) {
-        data.push_back(index);
-    }
 }
 
 void games::instrvector::pop(unsigned int index) {
     data.erase(data.begin() + index);
+}
+
+unsigned int games::instrvector::size() {
+    return data.size();
 }
 
 void games::instrvector::execute() {
