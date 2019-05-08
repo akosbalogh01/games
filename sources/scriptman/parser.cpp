@@ -13,10 +13,6 @@
 
 typedef enum lt {BRANCH, LEAF, LABEL, END, ERR} line_type;
 inline line_type type(const std::string&);
-extern const std::shared_ptr <games::instrvector> parse_label(const std::string&);
-extern const std::shared_ptr <games::branch>      parse_branch(const std::string&);
-extern const std::shared_ptr <games::instruction> parse_instr(void*, const std::string&);
-extern void parse_end(const std::string&);
 
 const games::instrvector games::scriptman::parser(const lexvec& input) {
     std::shared_ptr <games::instrvector> target_vector = std::make_shared <games::instrvector>();

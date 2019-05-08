@@ -1,17 +1,11 @@
 #include <assert.h>
-#include <map>
 #include <regex>
-#include <string>
 #include <memory>
 #include <iostream>
-#include "mapman.hpp"
-#include "stackman.hpp"
-#include "branch.hpp"
 #include "scriptman.hpp"
 #include "interfaces.hpp"
-#include "instrvector.hpp"
 
-const std::shared_ptr <games::instrvector> parse_label(const std::string& line) {
+const std::shared_ptr <games::instrvector> games::scriptman::parse_label(const std::string& line) {
     std::smatch match;
     if (std::regex_match(line, match, std::regex("(.*?)(:)"))) {
         if (games::stackman::branstack.size() != 0) {

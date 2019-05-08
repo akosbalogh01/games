@@ -1,17 +1,11 @@
 #include <assert.h>
-#include <map>
 #include <regex>
-#include <string>
 #include <memory>
 #include <iostream>
-#include "mapman.hpp"
-#include "stackman.hpp"
-#include "branch.hpp"
 #include "scriptman.hpp"
 #include "interfaces.hpp"
-#include "instrvector.hpp"
 
-void parse_end(const std::string& line) {
+void games::scriptman::parse_end(const std::string& line) {
     std::smatch match;
     if (std::regex_match(line, match, std::regex("(END\\[)(.*?)(];)"))) {
         if (match[2].compare("IF") == 0) {
