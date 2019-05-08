@@ -12,7 +12,7 @@ games::instruction::instruction(const games::instruction& p2) {
 
 void games::instruction::execute() {
     if (vtarget(vobject, vargs, vresult)) {
-        std::cout << "[i] Execution successful." << std::endl;
+        std::cout << "[i] Execution successful." << vargs << std::endl;
     }
     else {
         std::cout << "[i] Execution failed." << std::endl;
@@ -27,6 +27,10 @@ void games::instruction::setArgs(const std::string& param) {
     vargs = param;
 }
 
+void games::instruction::setResult(void* param) {
+    vresult = param;
+}
+
 void games::instruction::bind(const std::function <bool (void*, std::string, void*)>& param) {
     vtarget = param;
 }
@@ -37,6 +41,10 @@ void* games::instruction::object() {
 
 const std::string games::instruction::args() {
     return vargs;
+}
+
+void* games::instruction::result() {
+    return vresult;
 }
 
 const std::function <bool (void*, std::string, void*)> games::instruction::get() {

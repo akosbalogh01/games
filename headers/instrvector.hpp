@@ -10,7 +10,7 @@ typedef std::vector <std::shared_ptr <interfaces::executable>> insvect;
 namespace games {
     class instrvector: public interfaces::executable {
     private:
-        insvect data;
+        insvect         data;
 
     public:
         instrvector();
@@ -20,14 +20,6 @@ namespace games {
         void pop(unsigned int);
         void execute();
         unsigned int size();
-
-        /*
-        const instrvector operator= (const instrvector& p) {
-            instrvector temp;
-            temp.data = p.data;
-            return temp;
-        }
-        */
     };
 };
 

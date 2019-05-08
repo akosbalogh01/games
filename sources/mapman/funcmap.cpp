@@ -16,6 +16,9 @@ void games::mapman::init_funcmap() {
 
     funcmap["CREATEPAWN"]   = games::instruction(membmap["PAWNMAN"], funtype (games::statfunc::createpawn));
     funcmap["SETPAWNPOS"]   = games::instruction(membmap["PAWNMAN"], funtype (games::statfunc::setpawnpos));
+    funcmap["CONST"]        = games::instruction(nullptr, funtype (games::statfunc::returnconst));
+    funcmap["ASSIGN"]       = games::instruction(nullptr, funtype (games::statfunc::assignvalue));
+    funcmap["VALUE"]        = games::instruction(nullptr, funtype (games::statfunc::value));
 
     funcmap["ADD"]          = games::instruction(nullptr, funtype (games::statfunc::math::add));
     funcmap["SUB"]          = games::instruction(nullptr, funtype (games::statfunc::math::sub));

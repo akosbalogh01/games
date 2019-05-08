@@ -21,10 +21,12 @@ namespace games {
 
         void setObject(void*);
         void setArgs(const std::string&);
+        void setResult(void*);
         void bind(const std::function <bool (void*, std::string, void*)>&);
 
         void* object();
         const std::string args();
+        void* result();
         const std::function <bool (void*, std::string, void*)> get();
 
         void execute();

@@ -13,6 +13,7 @@ namespace games {
         bool setpawnpos(void*, const std::string&, void*);
         bool returnconst(void*, const std::string&, void*);
         bool assignvalue(void*, const std::string&, void*);
+        bool value(void*, const std::string&, void*);
 
         namespace math {
             bool add(void*, const std::string&, void*);
@@ -22,6 +23,19 @@ namespace games {
             bool multiply(void*, const std::string&, void*);
             bool divide(void*, const std::string&, void*);
             bool modulo(void*, const std::string&, void*);
+        };
+
+        namespace branch {
+            bool bif(void*, const std::string&, void*);
+            bool belif(void*, const std::string&, void*);
+            bool belse(void*, const std::string&, void*);
+
+            bool btrue(void*, const std::string&, void*);
+            bool bfalse(void*, const std::string&, void*);
+
+            bool bcond(void*, const std::string&, void*);
+            bool bconv(void*, const std::string&, void*);
+            bool foreach(void*, const std::string&, void*);
         };
     };
 };

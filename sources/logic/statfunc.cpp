@@ -44,14 +44,8 @@ bool games::statfunc::setpawnpos(void* target, const std::string& input, void* u
 }
 
 bool games::statfunc::returnconst(void* unused, const std::string& input, void* result) {
-    std::smatch match;
-    if (std::regex_match(input, match, std::regex("(.*?)(\\d+)(.*?)"))) {
-        int* target = (int*) result;
-        *target = std::stoi(match[2]);
-        return true;
-    }
-
-    return false;
+    *(unsigned int*) result = std::stoi(input);
+    return true;
 }
 
 bool games::statfunc::assignvalue(void* unused, const std::string& input, void* result) {
@@ -71,6 +65,14 @@ bool games::statfunc::assignvalue(void* unused, const std::string& input, void* 
     return false;
 }
 
+bool games::statfunc::value(void* unused, const std::string& input, void* result) {
+    auto search = games::mapman::varimap.find(input);
+    if (search != games::mapman::varimap.end()) {
+        *(unsigned int*) result = games::mapman::varimap[input];
+        return true;
+    }
 
+    return false;
+}
 
 

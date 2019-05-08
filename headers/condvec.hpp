@@ -2,18 +2,20 @@
 #define GAMES_CONDITION_VECTOR
 #include <string>
 #include <vector>
+#include <memory>
 #include "interfaces.hpp"
-#include "condition.hpp"
+
+typedef std::vector <std::shared_ptr <interfaces::conditional>> condvect;
 
 namespace games {
-    class condvector: public interfaces::conditional {
+    class condvec: public interfaces::conditional {
     private:
-        std::vector <interfaces::conditional*> vec;
+        condvect vec;
 
     public:
         bool build(const std::string&);
 
-        bool evaluate() const;
+        bool evaluate();
     };
 };
 

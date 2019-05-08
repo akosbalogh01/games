@@ -5,7 +5,8 @@
 #include <vector>
 #include "interfaces.hpp"
 #include "logic.hpp"
-#include "conditionvector.hpp"
+#include "condvec.hpp"
+
 /*
 typedef enum {EQ, LS, LE, GR, GE, NA} relation;
 inline relation deduce_relation(const std::string&);
