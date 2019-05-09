@@ -8,8 +8,8 @@
 const std::shared_ptr <games::instrvector> games::scriptman::parse_label(const std::string& line) {
     std::smatch match;
     if (std::regex_match(line, match, std::regex("(.*?)(:)"))) {
-        if (games::stackman::branstack.size() != 0) {
-            if (games::stackman::insvstack.size() != 1) {
+        if (games::stackman::branstack.size() == 0) {
+            if (games::stackman::insvstack.size() == 1) {
                 auto search1 = games::mapman::funcmap.find(match[1]);
                 auto search2 = games::mapman::funvmap.find(match[1]);
                 if ((search1 == games::mapman::funcmap.end()) && (search2 == games::mapman::funvmap.end())) {

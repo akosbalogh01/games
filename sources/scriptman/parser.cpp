@@ -23,8 +23,6 @@ const games::instrvector games::scriptman::parser(const lexvec& input) {
         case BRANCH: {
             std::cout << "[i] Parsing branch: " << index << std::endl;
             std::shared_ptr <games::branch> new_branch = parse_branch(index);
-            games::stackman::branstack.push_back(new_branch);
-            target_vector.get()->add(new_branch);
             break;
         }
 
@@ -32,6 +30,9 @@ const games::instrvector games::scriptman::parser(const lexvec& input) {
             std::cout << "[i] Parsing leaf: " << index << std::endl;
             auto new_instr = parse_instr(nullptr, index);
             games::stackman::insvstack.back().get()->add(new_instr);
+            for (int i = 0; i < games::stackman::insvstack.size(); i++) {
+                        std::cout << games::stackman::insvstack[i].get() << std::endl;
+                    }
             break;
         }
 
@@ -45,7 +46,10 @@ const games::instrvector games::scriptman::parser(const lexvec& input) {
 
         case END: {
             std::cout << "[i] Parsing block end: " << index << std::endl;
-            parse_end(index);
+            auto new_end = parse_end(index);
+            if (new_end != nullptr) {
+                target_vector.get()->add(new_end);
+            }
             break;
         }
 

@@ -5,11 +5,12 @@
 #include <memory>
 #include "statfunc.hpp"
 #include "interfaces.hpp"
+#include "instrvector.hpp"
 
 namespace games {
     class branch: public interfaces::executable {
     private:
-        std::vector <std::shared_ptr <interfaces::executable>>  branches;
+        std::vector <std::shared_ptr <games::instrvector>>      branches;
         std::vector <std::shared_ptr <interfaces::conditional>> evals;
 
     public:
@@ -19,6 +20,8 @@ namespace games {
 
         bool build(const std::string&);
         void execute();
+
+        const std::shared_ptr <games::instrvector> active_branch() const;
     };
 };
 

@@ -24,8 +24,8 @@ bool games::statfunc::branch::bif(void* object, const std::string& line, void* u
 
             auto target = (games::branch*) object;
             auto new_ivect = std::make_shared <games::instrvector> ();
+            std::cout << "created new instvect (if) at " << new_ivect.get() << std::endl;
             games::stackman::insvstack.push_back(new_ivect);
-            //assign new params? setObject, setArgs, setResult
             games::mapman::branmap[match[1]].execute();
 
             target->branches.push_back(new_ivect);
@@ -49,19 +49,21 @@ bool games::statfunc::branch::bif(void* object, const std::string& line, void* u
 
 bool games::statfunc::branch::belif(void* object, const std::string& line, void* unused) {
     std::smatch match;
-    if (std::regex_match(line, std::regex("(.*?)(\\[)(.*?)(\\])"))) { //CONDITION[..] or CONDITIONSET[..]
+    if (std::regex_match(line, match, std::regex("(.*?)(\\[)(.*?)(\\])"))) { //CONDITION[..] or CONDITIONSET[..]
         auto search = games::mapman::branmap.find(match[1]);
         if (search != games::mapman::branmap.end()) {
             void*       backup_object = games::mapman::branmap[match[1]].object();
             std::string backup_string = games::mapman::branmap[match[1]].args();
             void*       backup_result = games::mapman::branmap[match[1]].result();
             auto new_result = new std::shared_ptr <interfaces::conditional> ();
+            games::mapman::branmap[match[1]].setObject(object);
+            games::mapman::branmap[match[1]].setArgs(line);
             games::mapman::branmap[match[1]].setResult(new_result);
-
-            games::stackman::insvstack.pop_back();
 
             auto target = (games::branch*) object;
             auto new_ivect = std::make_shared <games::instrvector> ();
+            std::cout << "created new instvect (elseif) at " << new_ivect.get() << std::endl;
+            games::stackman::insvstack.pop_back();
             games::stackman::insvstack.push_back(new_ivect);
             //assign new params? setObject, setArgs, setResult
             games::mapman::branmap[match[1]].execute();
@@ -69,7 +71,7 @@ bool games::statfunc::branch::belif(void* object, const std::string& line, void*
             target->branches.push_back(new_ivect);
             target->evals.push_back(*new_result);
 
-            delete[] new_result;
+            delete new_result;
             games::mapman::branmap[match[1]].setObject(backup_object);
             games::mapman::branmap[match[1]].setArgs(backup_string);
             games::mapman::branmap[match[1]].setResult(backup_result);
@@ -90,6 +92,10 @@ bool games::statfunc::branch::belse(void* object, const std::string& line, void*
     auto target = (games::branch*) object;
     auto new_ivect = std::make_shared <games::instrvector> ();
     auto new_cvect = std::make_shared <games::condvec> ();
+    std::cout << "created new instvect (else) at " << new_ivect.get() << std::endl;
+
+    //games::stackman::insvstack.pop_back();
+    games::stackman::insvstack.push_back(new_ivect);
 
     target->branches.push_back(new_ivect);
     target->evals.push_back(new_cvect);

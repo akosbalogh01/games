@@ -8,7 +8,7 @@
 const std::shared_ptr <games::instruction> games::scriptman::parse_instr(void* object, const std::string& line) {
     std::smatch match;
     if (std::regex_match(line, match, std::regex("(.*?)(\\[)(.*?)(\\];)"))) {
-        if (games::stackman::insvstack.size() == 0) {
+        if (games::stackman::insvstack.size() != 0) {
             auto search1 = games::mapman::funcmap.find(match[1]);
             auto search2 = games::mapman::funvmap.find(match[1]);
             if (search1 != games::mapman::funcmap.end()) {
