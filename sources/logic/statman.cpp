@@ -50,8 +50,10 @@ bool games::statfunc::writeconsole(void* unused, const std::string& input, void*
 }
 
 bool games::statfunc::exit(void* object, const std::string& input, void* unused2) {
-    std::smatch match;
-    if (std::regex_match(input, match, std::regex("(EXIT\\[)(.*?)(\\];)"))) {
+    if (std::regex_match(input, std::regex("(EXIT\\[)(.*?)(\\];)")) || \
+        std::regex_match(input, std::regex("(exit)")) || \
+        std::regex_match(input, std::regex("(quit)")))
+    {
         games::logic* target = (games::logic*) object;
         std::cout << "[i] Exiting application." << std::endl;
         target->setRunning(false);

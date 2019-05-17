@@ -10,23 +10,18 @@
 #include "mapman.hpp"
 #include "initman.hpp"
 
-typedef std::vector <std::shared_ptr <interfaces::triggerable>> cmdvector;
-
 namespace games {
     class logic {
         friend class games::mapman;
         private:
-            unsigned int        logic_moves;
-            bool                logic_running, logic_valid;
-            cmdvector           logic_commands;
-            ini::inifile        logic_inifile;
-            std::string         logic_script_path;
-            games::graphics     logic_gfx;
-            games::pawnman      logic_pawnman;
-            games::initman      logic_initman;
-            const games::mapman logic_mapman;
-
-            void            pushDefaultCommands();
+            unsigned int    logic_moves;
+            bool            logic_running, logic_valid;
+            ini::inifile    logic_inifile;
+            std::string     logic_script_path;
+            games::graphics logic_gfx;
+            games::pawnman  logic_pawnman;
+            games::initman  logic_initman;
+            games::mapman   logic_mapman;
 
         public:
             logic(const logic&) = delete;

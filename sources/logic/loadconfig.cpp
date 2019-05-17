@@ -10,7 +10,6 @@ void games::logic::loadConfig(const std::string& filepath) {
     logic_moves = 0;
     logic_valid = logic_running = true;
 
-    pushDefaultCommands();
     logic_gfx.loadRenderVector(logic_inifile.value("Graphics", "table"));
     logic_gfx.loadCharacterVector(logic_inifile.value("Graphics", "charmap"));
     logic_pawnman.setCharmap(logic_gfx.charmap());

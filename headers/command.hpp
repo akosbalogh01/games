@@ -1,51 +1,28 @@
 #ifndef GAMES_COMMAND
 #define GAMES_COMMAND
+#include <string>
+#include <vector>
+#include "instrvector.hpp"
 
-#include <iostream>
-#include <memory>
-#include <functional>
-#include <regex>
-#include "interfaces.hpp"
+typedef std::vector <std::string> patvec;
 
 namespace games {
-    template <class exec_target, class exec_argument>
-    class command: public interfaces::triggerable {
-    protected:
-        exec_argument                                               cmd_target_argument;
-        std::shared_ptr <exec_target>                               cmd_target;
-        std::function   <void (exec_target*, const exec_argument&)> cmd_target_function;
-        std::vector     <std::string>                               cmd_regexp_patterns;
-        std::vector     <std::string>                               cmd_argument_vector;
+    class command {
+    private:
+        patvec patterns;
+        games::instruction instr;
 
     public:
-        command(const std::function <void (exec_target*, const exec_argument&)> target_func):
-        cmd_target_function(target_func) {}
-
-        virtual bool trigger(const std::string& input) {
-            for (auto const index: cmd_regexp_patterns) {
-                if (std::regex_match(input, std::regex(index))) {
-                    tokenise(input);
-                    return true;
-                }
-            }
-
-            return false;
+        command() {}
+        command(const games::instruction& p1): instr(p1) {}
+        command(const std::string& p1, const games::instruction& p2): instr(p2) {
+            patterns.push_back(p1);
         }
 
-        virtual void execute() {cmd_target_function(cmd_target.get(), cmd_target_argument);}
-        virtual void tokenise(std::string source) {
-            std::istringstream sstream(source);
-            std::string new_token;
+        bool evaluate(const std::string&) const;
+        void execute(const std::string&);
 
-            while (std::getline(sstream, new_token, ' ')) {
-                std::cout << new_token << std::endl;
-                cmd_argument_vector.push_back(new_token);
-            }
-        }
-
-        void setTarget(const std::shared_ptr <exec_target>& param) {cmd_target = param;}
-        void setArgument(const exec_argument& param) {cmd_target_argument = param;}
-        void pushRegexpPattern(const std::string& param) {cmd_regexp_patterns.push_back(param);}
+        void addPattern(const std::string&);
     };
 };
 

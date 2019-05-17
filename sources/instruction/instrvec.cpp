@@ -4,9 +4,15 @@ games::instrvector::instrvector() {
 
 }
 
-games::instrvector::instrvector(const games::instruction param) {
-    std::shared_ptr <games::instruction> new_instr = std::make_shared <games::instruction> (param);
+games::instrvector::instrvector(const games::instruction& param) {
+    auto new_instr = std::make_shared <games::instruction> (param);
     data.push_back(new_instr);
+}
+
+games::instrvector::instrvector(const games::instrvector& param) {
+    for (auto const& index: param.data) {
+        this->data.push_back(index);
+    }
 }
 
 void games::instrvector::add(const std::shared_ptr <interfaces::executable>& param) {

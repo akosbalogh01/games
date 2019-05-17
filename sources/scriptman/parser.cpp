@@ -30,7 +30,7 @@ const games::instrvector games::scriptman::parser(const lexvec& input) {
             std::cout << "[i] Parsing leaf: " << index << std::endl;
             auto new_instr = parse_instr(nullptr, index);
             games::stackman::insvstack.back().get()->add(new_instr);
-            for (int i = 0; i < games::stackman::insvstack.size(); i++) {
+            for (unsigned i = 0; i < games::stackman::insvstack.size(); i++) {
                         std::cout << games::stackman::insvstack[i].get() << std::endl;
                     }
             break;

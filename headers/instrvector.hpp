@@ -14,7 +14,8 @@ namespace games {
 
     public:
         instrvector();
-        instrvector(const games::instruction);
+        instrvector(const games::instruction&);
+        instrvector(const games::instrvector&);
         void add(const std::shared_ptr <interfaces::executable>&);
 
         void pop(unsigned int);
