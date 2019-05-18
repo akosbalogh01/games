@@ -19,6 +19,7 @@ void games::mapman::init_funcmap() {
     funcmap["DEFINEMOVE"]   = games::instruction(membmap["PAWNMAN"], funtype (games::statfunc::moves::defmove));
     funcmap["ENABLEMOVE"]   = games::instruction(membmap["PAWNMAN"], funtype (games::statfunc::moves::dismove));
     funcmap["DISABLEMOVE"]  = games::instruction(membmap["PAWNMAN"], funtype (games::statfunc::moves::enamove));
+
     funcmap["CONST"]        = games::instruction(nullptr, funtype (games::statfunc::returnconst));
     funcmap["ASSIGN"]       = games::instruction(nullptr, funtype (games::statfunc::assignvalue));
     funcmap["VALUE"]        = games::instruction(nullptr, funtype (games::statfunc::value));
