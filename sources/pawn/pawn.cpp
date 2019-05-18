@@ -1,9 +1,10 @@
-#include "vector2d.hpp"
 #include "pawn.hpp"
 
-bool games::pawn::valid_move(const games::vec2d& param) {
+bool games::pawn::move(const games::vec2d& param) {
     for (auto index: pawn_moveset) {
-        if (index.x() == param.x() && index.y() == param.y()) {
+        if (index.getVect().x() == param.x() && index.getVect().y() == param.y()) {
+            pawn_pos.setX(pawn_pos.x() + param.x());
+            pawn_pos.setY(pawn_pos.y() + param.y());
             return true;
         }
     }
@@ -11,8 +12,12 @@ bool games::pawn::valid_move(const games::vec2d& param) {
     return false;
 }
 
+void games::pawn::setMoveEnabled(unsigned int index, const bool param) {
+    pawn_moveset[index].setEnabled(param);
+}
+
 void games::pawn::pushMove(const games::vec2d& param) {
-    pawn_moveset.push_back(param);
+    pawn_moveset.push_back(games::move(param));
 }
 
 void games::pawn::popMove(const int index) {

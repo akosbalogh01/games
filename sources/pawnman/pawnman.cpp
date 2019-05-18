@@ -17,3 +17,15 @@ const pawnvec& games::pawnman::get() {
 unsigned int games::pawnman::getPawnType(unsigned int index) {
     return pawn_vector[index].get()->getType();
 }
+
+void games::pawnman::defineMove(uint index, const games::vec2d& param) {
+    pawn_vector[index].get()->pushMove(param);
+}
+
+void games::pawnman::enableMove(uint pawnindex, uint moveindex) {
+    pawn_vector[pawnindex].get()->setMoveEnabled(moveindex, true);
+}
+
+void games::pawnman::disableMove(uint pawnindex, uint moveindex) {
+    pawn_vector[pawnindex].get()->setMoveEnabled(moveindex, false);
+}

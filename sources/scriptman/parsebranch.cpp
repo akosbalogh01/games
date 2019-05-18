@@ -17,6 +17,12 @@ const std::shared_ptr <games::branch> games::scriptman::parse_branch(const std::
                 //games::stackman::insvstack.push_back(new_branch.get()->active_branch());
                 return new_branch;
             }
+            else if (match[1].compare("FOREACH") == 0) {
+
+            }
+            else if (match[1].compare("WHILE") == 0) {
+
+            }
             else {
                 //games::stackman::insvstack.pop_back();
                 games::stackman::branstack.back().get()->build(line);

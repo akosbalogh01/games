@@ -4,10 +4,12 @@
 #include <memory>
 #include <string>
 #include "pawn.hpp"
+#include "vector2d.hpp"
 
 typedef std::vector <std::shared_ptr <games::pawn>> pawnvec;
 typedef std::shared_ptr <games::pawn> pPawn;
 typedef std::shared_ptr <std::vector <char>> charvec;
+typedef unsigned int uint;
 
 namespace games {
     class pawnman {
@@ -16,22 +18,19 @@ namespace games {
             charvec pawn_charmap;
 
         public:
-            static unsigned int pawn_index;
+            static uint pawn_index;
 
-            bool    createPawn(unsigned int, unsigned int);
-            //void    loadPawns(const std::string&);
-            void    initPawns(const std::string&);
-
-
-            bool    setPawnPos(const unsigned int, const games::vec2d&);
+            bool    createPawn(uint, uint);
+            bool    setPawnPos(const uint, const games::vec2d&);
             void    setCharmap(const charvec&);
-            char    getChar(const unsigned int) const;
+            char    getChar(const uint) const;
+            uint    getPawnType(uint);
+
+            void    defineMove(uint, const games::vec2d&);
+            void    enableMove(uint, uint);
+            void    disableMove(uint, uint);
 
             const pawnvec& get();
-            //void    setPawnType()
-
-            //getPawnPos
-            unsigned int getPawnType(unsigned int);
     };
 };
 

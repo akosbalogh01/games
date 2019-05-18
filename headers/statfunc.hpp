@@ -37,6 +37,12 @@ namespace games {
             bool bconv(void*, const std::string&, void*);
             bool foreach(void*, const std::string&, void*);
         };
+
+        namespace moves {
+            bool defmove(void*, const std::string&, void*);
+            bool dismove(void*, const std::string&, void*);
+            bool enamove(void*, const std::string&, void*);
+        };
     };
 };
 

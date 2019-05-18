@@ -8,6 +8,8 @@ namespace games {
         int coord_y;
 
     public:
+        vec2d(): coord_x(0), coord_y(0) {}
+        vec2d(const vec2d& param): coord_x(param.coord_x), coord_y(param.coord_y) {}
         vec2d(int x, int y): coord_x(x), coord_y(y) {}
 
         const int x() const {return coord_x;}
