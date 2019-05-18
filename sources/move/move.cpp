@@ -33,3 +33,11 @@ void games::move::execute() {
 bool games::move::evaluate() {
     return vcond.get()->evaluate();
 }
+
+void games::move::buildCond(const std::string& input) {
+    //vcond.get()->build(input);
+}
+
+void games::move::buildInst(const std::string& input) {
+    //vinstr.get()->build(input);
+}

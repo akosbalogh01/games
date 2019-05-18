@@ -1,4 +1,6 @@
 #include "pawn.hpp"
+// TODO: add condition vector to pawn moves
+// TODO: add post-process instructionvector to pawn moves
 
 bool games::pawn::move(const games::vec2d& param) {
     for (auto index: pawn_moveset) {

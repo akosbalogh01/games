@@ -23,6 +23,7 @@ bool games::statfunc::moves::defmove(void* object, const std::string& input, voi
             games::pawnman* target = (games::pawnman*) object;
             target->defineMove(std::stoi(match[2]), *new_vector);
             std::cout << "[i] Defined move " << match[4] << " on pawn[" << match[2] << "]" << std::endl;
+            return true;
         }
         else {
             std::cout << "[e] Failed to define vector from " << input << std::endl;

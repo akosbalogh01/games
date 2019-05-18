@@ -7,22 +7,17 @@
 
 namespace games {
     class iteration: public interfaces::executable {
-    private:
-        void* vobj;
-        unsigned int viter;
+    protected:
         std::string vargs;
-        std::shared_ptr <games::instrvector> vinstv;
+        std::shared_ptr <interfaces::executable> vinstv;
 
     public:
-        void setObject(void*);
         void setArgs(const std::string&);
-
-        void* object() const;
         std::string args() const;
 
-        void execute();
+        virtual void execute();
 
-        const std::shared_ptr <games::instrvector>& get();
+        const std::shared_ptr <interfaces::executable>& get();
     };
 };
 
