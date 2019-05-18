@@ -25,10 +25,12 @@ namespace games {
             void    setCharmap(const charvec&);
             char    getChar(const uint) const;
             uint    getPawnType(uint);
+            int     getPawnIndex(const games::vec2d&);
 
             void    defineMove(uint, const games::vec2d&);
             void    enableMove(uint, uint);
             void    disableMove(uint, uint);
+            bool    movePawn(uint, const games::vec2d&);
 
             const pawnvec& get();
     };

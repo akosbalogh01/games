@@ -62,3 +62,32 @@ bool games::statfunc::moves::enamove(void* object, const std::string& input, voi
 
     return false;
 }
+
+bool games::statfunc::movepawn(void* object, const std::string& input, void* unused) {
+    std::smatch match;
+    if (std::regex_match(input, match, std::regex("(move)(\\s+\\[)(\\d+)(,\\s+)(\\d+)(\\]\\s+\\[)(\\d+)(,\\s+)(\\d+)(\\])"))) {
+        games::pawnman* target = (games::pawnman*) object;
+        games::vec2d from(std::stoi(match[3]), std::stoi(match[5]));
+        games::vec2d offs(std::stoi(match[7]), std::stoi(match[9]));
+
+        int id = target->getPawnIndex(from);
+        if (id != -1) {
+            if (target->movePawn(id, offs)) {
+                std::cout << "[i] Done" << std::endl;
+                return true;
+            }
+            else {
+                std::cout << "[e] Invalid move" << std::endl;
+            }
+        }
+        else {
+            std::cout << "[e] No pawn found at " << from.x() << ";" << from.y() << std::endl;
+        }
+    }
+    else {
+        std::cout << "[e] Invalid syntax, use" << std::endl;
+        std::cout << "[e] (move)(\\s+\\[)(\\d+)(,\\s+)(\\d+)(\\]\\s+\\[)(\\d+)(,\\s+)(\\d+)(\\])" << std::endl;
+    }
+
+    return false;
+}

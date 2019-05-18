@@ -25,3 +25,11 @@ bool games::move::enabled() const {
 const games::vec2d& games::move::getVect() const {
     return vmove;
 }
+
+void games::move::execute() {
+    vinstr.get()->execute();
+}
+
+bool games::move::evaluate() {
+    return vcond.get()->evaluate();
+}

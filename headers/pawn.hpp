@@ -25,7 +25,8 @@ namespace games {
         // Member functions
         const unsigned int id() const {return pawn_id;}
         const char character() const {return pawn_char;}
-        const unsigned int getType() {return pawn_type;}
+        const unsigned int getType() const {return pawn_type;}
+        const games::vec2d& getPos() const {return pawn_pos;}
 
         bool move(const games::vec2d&);
         void setMoveEnabled(unsigned int, const bool);
@@ -36,6 +37,8 @@ namespace games {
         void setPos(const games::vec2d&);
         unsigned int pos1D() const;
         void setType(const unsigned int);
+
+
     };
 };
 

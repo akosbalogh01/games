@@ -9,6 +9,7 @@
 #include "pawnman.hpp"
 #include "mapman.hpp"
 #include "initman.hpp"
+#include "cmdman.hpp"
 
 namespace games {
     class logic {
@@ -22,6 +23,7 @@ namespace games {
             games::pawnman  logic_pawnman;
             games::initman  logic_initman;
             games::mapman   logic_mapman;
+            games::cmdman   logic_cmdman;
 
         public:
             logic(const logic&) = delete;

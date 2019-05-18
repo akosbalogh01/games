@@ -11,6 +11,7 @@ namespace games {
 
         bool createpawn(void*, const std::string&, void*);
         bool setpawnpos(void*, const std::string&, void*);
+        bool movepawn(void*, const std::string&, void*);
         bool returnconst(void*, const std::string&, void*);
         bool assignvalue(void*, const std::string&, void*);
         bool value(void*, const std::string&, void*);

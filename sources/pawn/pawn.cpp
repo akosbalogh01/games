@@ -2,7 +2,7 @@
 
 bool games::pawn::move(const games::vec2d& param) {
     for (auto index: pawn_moveset) {
-        if (index.getVect().x() == param.x() && index.getVect().y() == param.y()) {
+        if (index.getVect() == param && index.enabled()) {
             pawn_pos.setX(pawn_pos.x() + param.x());
             pawn_pos.setY(pawn_pos.y() + param.y());
             return true;
