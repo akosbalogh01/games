@@ -18,6 +18,10 @@ namespace games {
         bool assignvalue(void*, const std::string&, void*);
         bool value(void*, const std::string&, void*);
 
+        namespace pawn {
+            bool type(void*, const std::string&, void*);
+        };
+
         namespace math {
             bool add(void*, const std::string&, void*);
             bool sub(void*, const std::string&, void*);

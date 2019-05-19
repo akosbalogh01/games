@@ -33,4 +33,6 @@ void games::mapman::init_funcmap() {
     funcmap["MULTIPLY"]     = games::instruction(nullptr, funtype (games::statfunc::math::multiply));
     funcmap["DIVIDE"]       = games::instruction(nullptr, funtype (games::statfunc::math::divide));
     funcmap["MODULO"]       = games::instruction(nullptr, funtype (games::statfunc::math::modulo));
+
+    funcmap["PAWNTYPE"]     = games::instruction(membmap["PAWNMAN"], funtype (games::statfunc::pawn::type));
 }

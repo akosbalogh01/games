@@ -15,7 +15,7 @@ void games::cmdman::init_cmdmap() {
     cmdmap["exit"].addPattern("(quit)");
 
     cmdmap["move"] = games::command(games::instruction(games::mapman::membmap["PAWNMAN"], funtype (games::statfunc::movepawn)));
-    cmdmap["move"].addPattern("(move)(\\s+\\[\\d+,\\s+\\d+\\]\\s+\\[\\d+,\\s+\\d+\\])");
+    cmdmap["move"].addPattern("(move)(\\s+\\[[-]?\\d+,\\s+[-]?\\d+\\]\\s+\\[[-]?\\d+,\\s+[-]?\\d+\\])");
     //cmdmap["move"].addPattern("(move)(\\s+\\[\\d+,\\s+\\d+\\]\\s+)(to)(\\s+\\[\\d+,\\s+\\d+\\])");
 
     cmdmap["start"] = games::command(games::instruction(games::mapman::membmap["INITMAN"], funtype (games::statfunc::start)));
