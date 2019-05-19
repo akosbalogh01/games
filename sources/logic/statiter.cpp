@@ -6,6 +6,7 @@
 #include "statfunc.hpp"
 #include "interfaces.hpp"
 #include "foreach.hpp"
+#include "while.hpp"
 
 bool games::statfunc::iter::foreach(void* unused1, const std::string& input, void* unused2) {
     std::smatch match;
@@ -34,6 +35,25 @@ bool games::statfunc::iter::foreach(void* unused1, const std::string& input, voi
     }
     else {
         std::cout << "[e] Failed to create for each iterator from line " << input << std::endl;
+    }
+
+    return false;
+}
+
+bool games::statfunc::iter::whileloop(void* unused1, const std::string& input, void* unused2) {
+    std::smatch match;
+    if (std::regex_match(input, match, std::regex("(WHILE\\[)(.*?)(\\]:)"))) {
+        std::shared_ptr <interfaces::executable> new_while = std::make_shared <games::whileloop> ();
+        games::stackman::insvstack.back().get()->add(new_while);
+
+        std::shared_ptr <games::instrvector> new_vector = std::make_shared <games::instrvector> ();
+        (dynamic_cast <games::whileloop*> (new_while.get()))->bind(new_vector);
+        (dynamic_cast <games::whileloop*> (new_while.get()))->build(match[2]);
+        games::stackman::insvstack.push_back(new_vector);
+        return true;
+    }
+    else {
+        std::cout << "[e] Failed to create while loop from line " << input << std::endl;
     }
 
     return false;

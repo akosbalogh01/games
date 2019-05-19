@@ -7,11 +7,11 @@
 namespace games {
     class foreach: public games::iteration {
     private:
+        std::string vtarget;
         std::string viter;
-        std::shared_ptr <games::instrvector> vinstr;
 
     public:
-        foreach(const std::string& p1, const std::string& p2): iteration(p1), viter(p2) {}
+        foreach(const std::string& p1, const std::string& p2): vtarget(p1), viter(p2) {}
 
         void execute();
 

@@ -87,4 +87,75 @@ bool games::statfunc::value(void* unused, const std::string& input, void* result
     return false;
 }
 
+bool games::statfunc::input(void* object, const std::string& input, void* result) {
+    if (input.compare("INPUT[VOID];") == 0) {
+        games::logic* target = (games::logic*) object;
+        target->processInput();
+        return true;
+    }
+
+    return false;
+}
+
+bool games::statfunc::display(void* object, const std::string& input, void* result) {
+    if (input.compare("DISPLAY[VOID];") == 0) {
+        games::logic* target = (games::logic*) object;
+        target->display();
+        return true;
+    }
+
+    return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

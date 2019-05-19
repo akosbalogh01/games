@@ -27,16 +27,16 @@ bool games::scriptman::parse_branch(const std::string& line) {
 
         }
         else if (search2 != games::mapman::itermap.end()) {
-            auto backup_args   = games::mapman::funcmap[match[1]].args();
-            auto backup_object = games::mapman::funcmap[match[1]].object();
-            auto backup_result = games::mapman::funcmap[match[1]].result();
+            auto backup_args   = games::mapman::itermap[match[1]].args();
+            auto backup_object = games::mapman::itermap[match[1]].object();
+            auto backup_result = games::mapman::itermap[match[1]].result();
 
-            games::mapman::funcmap[match[1]].setArgs(line);
-            games::mapman::funcmap[match[1]].execute();
+            games::mapman::itermap[match[1]].setArgs(line);
+            games::mapman::itermap[match[1]].execute();
 
-            games::mapman::funcmap[match[1]].setArgs(backup_args);
-            games::mapman::funcmap[match[1]].setObject(backup_object);
-            games::mapman::funcmap[match[1]].setResult(backup_result);
+            games::mapman::itermap[match[1]].setArgs(backup_args);
+            games::mapman::itermap[match[1]].setObject(backup_object);
+            games::mapman::itermap[match[1]].setResult(backup_result);
             return true;
         }
         else {

@@ -10,6 +10,8 @@ namespace games {
         bool exit(void*, const std::string&, void*);
         bool call(void*, const std::string&, void*);
         bool start(void*, const std::string&, void*);
+        bool display(void*, const std::string&, void*);
+        bool input(void*, const std::string&, void*);
 
         bool createpawn(void*, const std::string&, void*);
         bool setpawnpos(void*, const std::string&, void*);
@@ -57,6 +59,7 @@ namespace games {
 
         namespace iter {
             bool foreach(void*, const std::string&, void*);
+            bool whileloop(void*, const std::string&, void*);
         };
     };
 };

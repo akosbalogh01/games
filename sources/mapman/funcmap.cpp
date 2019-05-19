@@ -13,8 +13,8 @@ void games::mapman::init_funcmap() {
     funcmap["DEFINE_FUN"]   = games::instruction(nullptr, funtype (games::statfunc::parsedeffun));
     funcmap["WRITECONSOLE"] = games::instruction(nullptr, funtype (games::statfunc::writeconsole));
     funcmap["EXIT"]         = games::instruction(membmap["LOGIC"], funtype (games::statfunc::exit));
-
-    funcmap["FOREACH"]      = games::instruction(nullptr, funtype (games::statfunc::iter::foreach));
+    funcmap["INPUT"]        = games::instruction(membmap["LOGIC"], funtype (games::statfunc::input));
+    funcmap["DISPLAY"]      = games::instruction(membmap["LOGIC"], funtype (games::statfunc::display));
 
     funcmap["CREATEPAWN"]   = games::instruction(membmap["PAWNMAN"], funtype (games::statfunc::createpawn));
     funcmap["SETPAWNPOS"]   = games::instruction(membmap["PAWNMAN"], funtype (games::statfunc::setpawnpos));

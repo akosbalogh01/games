@@ -1,13 +1,14 @@
 #include "iterator.hpp"
 
-std::string games::iteration::target() const {
-    return vtarget;
-}
-
-void games::iteration::setTarget(const std::string& param) {
-    vtarget = param;
-}
-
 void games::iteration::execute() {
-    return;
+    vinstr.get()->execute();
+}
+
+
+void games::iteration::bind(const std::shared_ptr <games::instrvector>& param) {
+    vinstr = param;
+}
+
+const std::shared_ptr <games::instrvector>& games::iteration::get() const {
+    return vinstr;
 }

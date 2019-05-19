@@ -29,6 +29,11 @@ bool games::scriptman::parse_end(const std::string& line) {
             games::stackman::insvstack.pop_back();
             return true;
         }
+        else if (match[2].compare("WHILE") == 0) {
+            std::cout << "[i] Ending while loop" << std::endl;
+            games::stackman::insvstack.pop_back();
+            return true;
+        }
         else {
             auto search = games::mapman::funvmap.find(match[2]);
             if (search != games::mapman::funvmap.end()) {

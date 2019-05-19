@@ -9,17 +9,12 @@ int main(const int argc, const char** argv) {
     games::logic game(argv[1]);
 
     /*
-    games::condition <int> lofasz(f1, 35);
-    lofasz.bind(std::greater <int>());
-    bool asd = lofasz.evaluate();
-    */
-
     game.setRunning(true);
     while (game.isRunning()) {
         game.processInput();
-        //game.nextMove();
-        game.display();
-    }
+    }*/
+
+    game.processInput();
 
     return 0;
 }

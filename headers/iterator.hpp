@@ -8,15 +8,13 @@
 namespace games {
     class iteration: public interfaces::executable {
     protected:
-        std::string vtarget;
+        std::shared_ptr <games::instrvector> vinstr;
 
     public:
-        iteration(const std::string& param): vtarget(param) {}
-
-        virtual void setTarget(const std::string&);
-        virtual std::string target() const;
-
         virtual void execute();
+
+        virtual void bind(const std::shared_ptr <games::instrvector>&);
+        virtual const std::shared_ptr <games::instrvector>& get() const;
     };
 };
 
