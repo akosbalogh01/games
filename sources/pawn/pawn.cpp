@@ -1,6 +1,4 @@
 #include "pawn.hpp"
-// TODO: add condition vector to pawn moves
-// TODO: add post-process instructionvector to pawn moves
 
 bool games::pawn::move(const games::vec2d& param) {
     for (auto index: pawn_moveset) {
@@ -47,6 +45,42 @@ unsigned int games::pawn::pos1D() const {
     return pawn_pos.y() * 8 + pawn_pos.x();
 }
 
+void games::pawn::enableMoves() {
+    for (auto& index: pawn_moveset) {
+        index.setEnabled(true);
+    }
+}
 
+void games::pawn::enableMove(unsigned int index) {
+    if (index < pawn_moveset.size()) {
+        pawn_moveset[index].setEnabled(true);
+    }
+}
 
+void games::pawn::enableMove(const games::vec2d& vec) {
+    for (auto& index: pawn_moveset) {
+        if (index.getVect() == vec) {
+            index.setEnabled(true);
+        }
+    }
+}
 
+void games::pawn::disableMoves() {
+    for (auto& index: pawn_moveset) {
+        index.setEnabled(false);
+    }
+}
+
+void games::pawn::disableMove(unsigned int index) {
+    if (index < pawn_moveset.size()) {
+        pawn_moveset[index].setEnabled(false);
+    }
+}
+
+void games::pawn::disableMove(const games::vec2d& vec) {
+    for (auto& index: pawn_moveset) {
+        if (index.getVect() == vec) {
+            index.setEnabled(false);
+        }
+    }
+}

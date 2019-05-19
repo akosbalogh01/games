@@ -32,14 +32,42 @@ void games::pawnman::defineMove(uint index, const games::vec2d& param) {
     pawn_vector[index].get()->pushMove(param);
 }
 
+bool games::pawnman::movePawn(uint index, const games::vec2d& param) {
+    return pawn_vector[index].get()->move(param);
+}
+
+void games::pawnman::enableMoves(uint pawnindex) {
+    if (pawnindex < pawn_vector.size()) {
+        pawn_vector[pawnindex].get()->enableMoves();
+    }
+}
+
 void games::pawnman::enableMove(uint pawnindex, uint moveindex) {
-    pawn_vector[pawnindex].get()->setMoveEnabled(moveindex, true);
+    if (pawnindex < pawn_vector.size()) {
+        pawn_vector[pawnindex].get()->enableMove(moveindex);
+    }
+}
+
+void games::pawnman::enableMove(uint pawnindex, const games::vec2d& vec) {
+    if (pawnindex < pawn_vector.size()) {
+        pawn_vector[pawnindex].get()->enableMove(vec);
+    }
+}
+
+void games::pawnman::disableMoves(uint pawnindex) {
+    if (pawnindex < pawn_vector.size()) {
+        pawn_vector[pawnindex].get()->disableMoves();
+    }
 }
 
 void games::pawnman::disableMove(uint pawnindex, uint moveindex) {
-    pawn_vector[pawnindex].get()->setMoveEnabled(moveindex, false);
+    if (pawnindex < pawn_vector.size()) {
+        pawn_vector[pawnindex].get()->disableMove(moveindex);
+    }
 }
 
-bool games::pawnman::movePawn(uint index, const games::vec2d& param) {
-    return pawn_vector[index].get()->move(param);
+void games::pawnman::disableMove(uint pawnindex, const games::vec2d& vec) {
+    if (pawnindex < pawn_vector.size()) {
+        pawn_vector[pawnindex].get()->disableMove(vec);
+    }
 }

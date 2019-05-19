@@ -28,8 +28,13 @@ namespace games {
             int     getPawnIndex(const games::vec2d&);
 
             void    defineMove(uint, const games::vec2d&);
+            void    enableMoves(uint);
             void    enableMove(uint, uint);
+            void    enableMove(uint, const games::vec2d&);
+
+            void    disableMoves(uint);
             void    disableMove(uint, uint);
+            void    disableMove(uint, const games::vec2d&);
             bool    movePawn(uint, const games::vec2d&);
 
             const pawnvec& get();

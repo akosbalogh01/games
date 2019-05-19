@@ -6,6 +6,9 @@
 #include "move.hpp"
 #include "vector2d.hpp"
 
+// TODO: add condition vector to pawn moves
+// TODO: add post-process instructionvector to pawn moves
+
 namespace games {
     class pawn {
     private:
@@ -38,7 +41,13 @@ namespace games {
         unsigned int pos1D() const;
         void setType(const unsigned int);
 
+        void enableMoves();
+        void enableMove(unsigned int);
+        void enableMove(const games::vec2d&);
 
+        void disableMoves();
+        void disableMove(unsigned int);
+        void disableMove(const games::vec2d&);
     };
 };
 
