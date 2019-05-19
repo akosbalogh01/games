@@ -26,6 +26,7 @@ namespace games {
             char    getChar(const uint) const;
             uint    getPawnType(uint);
             int     getPawnIndex(const games::vec2d&);
+            int     getPawnOwner(uint);
 
             void    defineMove(uint, const games::vec2d&);
             void    enableMoves(uint);

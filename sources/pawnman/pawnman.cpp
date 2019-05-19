@@ -28,6 +28,14 @@ int games::pawnman::getPawnIndex(const games::vec2d& param) {
     return -1;
 }
 
+int games::pawnman::getPawnOwner(uint index) {
+    if (index < pawn_vector.size()) {
+        return pawn_vector[index].get()->getOwnerID();
+    }
+
+    return -1;
+}
+
 void games::pawnman::defineMove(uint index, const games::vec2d& param) {
     pawn_vector[index].get()->pushMove(param);
 }

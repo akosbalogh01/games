@@ -29,6 +29,7 @@ namespace games {
         const unsigned int id() const {return pawn_id;}
         const char character() const {return pawn_char;}
         const unsigned int getType() const {return pawn_type;}
+        const unsigned int getOwnerID() const {return owner_id;}
         const games::vec2d& getPos() const {return pawn_pos;}
 
         bool move(const games::vec2d&);

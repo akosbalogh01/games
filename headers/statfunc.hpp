@@ -20,6 +20,7 @@ namespace games {
 
         namespace pawn {
             bool type(void*, const std::string&, void*);
+            bool owner(void*, const std::string&, void*);
         };
 
         namespace math {
@@ -48,7 +49,10 @@ namespace games {
         namespace moves {
             bool defmove(void*, const std::string&, void*);
             bool dismove(void*, const std::string&, void*);
+            bool dismoves(void*, const std::string&, void*);
             bool enamove(void*, const std::string&, void*);
+            bool enamoves(void*, const std::string&, void*);
+
         };
 
         namespace iter {
