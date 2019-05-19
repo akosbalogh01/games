@@ -10,4 +10,5 @@ void games::mapman::init_membmap() {
     membmap["LOGIC"]    = origin;
     membmap["PAWNMAN"]  = &origin->logic_pawnman;
     membmap["GRAPHICS"] = &origin->logic_gfx;
+    membmap["INITMAN"]  = &origin->logic_initman;
 }

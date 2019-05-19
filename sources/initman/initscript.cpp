@@ -11,8 +11,16 @@ bool games::initman::loadInitScript(const std::string& filepath) {
     std::cout << "[i] Generating init script from " << filepath << ':' << std::endl;
 
     vinitscript = games::scriptman::lexer(filepath);
-    vinstvector = games::scriptman::parser(vinitscript);
-    games::mapman::funvmap["INIT"] = vinstvector;
+    games::scriptman::parser(vinitscript);
+
+    return true;
+}
+
+bool games::initman::loadMainScript(const std::string& filepath) {
+    std::cout << "[i] Generating main script from " << filepath << ':' << std::endl;
+
+    vmainscript = games::scriptman::lexer(filepath);
+    games::scriptman::parser(vmainscript);
 
     return true;
 }

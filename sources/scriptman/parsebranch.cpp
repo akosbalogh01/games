@@ -5,7 +5,7 @@
 #include "scriptman.hpp"
 #include "interfaces.hpp"
 
-const std::shared_ptr <games::branch> games::scriptman::parse_branch(const std::string& line) {
+bool games::scriptman::parse_branch(const std::string& line) {
     std::smatch match;
     if (std::regex_match(line, match, std::regex("(.*?)(\\[)(.*?)(\\]:)"))) {
         auto search = games::mapman::branmap.find(match[1]);
@@ -15,7 +15,7 @@ const std::shared_ptr <games::branch> games::scriptman::parse_branch(const std::
                 games::stackman::branstack.push_back(new_branch);
                 new_branch.get()->build(line);
                 //games::stackman::insvstack.push_back(new_branch.get()->active_branch());
-                return new_branch;
+                return true;
             }
             else if (match[1].compare("FOREACH") == 0) {
 
@@ -27,7 +27,7 @@ const std::shared_ptr <games::branch> games::scriptman::parse_branch(const std::
                 //games::stackman::insvstack.pop_back();
                 games::stackman::branstack.back().get()->build(line);
                 //games::stackman::insvstack.push_back(new_branch.get()->active_branch());
-                return nullptr;
+                return true;
             }
 
         }
@@ -38,6 +38,6 @@ const std::shared_ptr <games::branch> games::scriptman::parse_branch(const std::
     }
 
     assert(0);
-    return nullptr;
+    return false;
 }
 

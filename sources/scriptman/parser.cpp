@@ -11,45 +11,47 @@
 #include "interfaces.hpp"
 #include "instrvector.hpp"
 
+void print_insvstack() {
+    for (unsigned int i = 0; i < games::stackman::insvstack.size(); i++) {
+        std::cout << "[" << i << "] " << games::stackman::insvstack[i].get() << std::endl;
+    }
+}
+
 typedef enum lt {BRANCH, LEAF, LABEL, END, ERR} line_type;
 inline line_type type(const std::string&);
 
-const games::instrvector games::scriptman::parser(const lexvec& input) {
-    std::shared_ptr <games::instrvector> target_vector = std::make_shared <games::instrvector>();
-    games::stackman::insvstack.push_back(target_vector);
-
+void games::scriptman::parser(const lexvec& input) {
     for (auto const& index: input) {
         switch (type(index)) {
         case BRANCH: {
+            print_insvstack();
             std::cout << "[i] Parsing branch: " << index << std::endl;
-            std::shared_ptr <games::branch> new_branch = parse_branch(index);
+            parse_branch(index);
+            print_insvstack();
             break;
         }
 
         case LEAF: {
-            std::cout << "[i] Parsing leaf: " << index << std::endl;
-            auto new_instr = parse_instr(nullptr, index);
-            games::stackman::insvstack.back().get()->add(new_instr);
-            for (unsigned i = 0; i < games::stackman::insvstack.size(); i++) {
-                        std::cout << games::stackman::insvstack[i].get() << std::endl;
-                    }
+            print_insvstack();
+            std::cout << "[i] Parsing leaf (" << games::stackman::insvstack.back().get() << "): " << index << std::endl;
+            parse_instr(nullptr, index);
+            print_insvstack();
             break;
         }
 
         case LABEL: {
+            print_insvstack();
             std::cout << "[i] Parsing label: " << index << std::endl;
-            auto new_vector = parse_label(index);
-            games::stackman::insvstack.push_back(new_vector);
-            target_vector.get()->add(new_vector);
+            parse_label(index);
+            print_insvstack();
             break;
         }
 
         case END: {
+            print_insvstack();
             std::cout << "[i] Parsing block end: " << index << std::endl;
-            auto new_end = parse_end(index);
-            if (new_end != nullptr) {
-                target_vector.get()->add(new_end);
-            }
+            parse_end(index);
+            print_insvstack();
             break;
         }
 
@@ -57,13 +59,8 @@ const games::instrvector games::scriptman::parser(const lexvec& input) {
         default:
             std::cout << "[e] Fatal error: unparsable line " << index << std::endl;
             assert(0);
-            return games::instrvector();
         }
     }
-
-    std::cout << "target: " << target_vector.get()->size() << std::endl;
-
-    return *target_vector.get();
 }
 
 line_type type(const std::string& line) {

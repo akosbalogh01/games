@@ -65,7 +65,6 @@ bool games::statfunc::branch::belif(void* object, const std::string& line, void*
             std::cout << "created new instvect (elseif) at " << new_ivect.get() << std::endl;
             games::stackman::insvstack.pop_back();
             games::stackman::insvstack.push_back(new_ivect);
-            //assign new params? setObject, setArgs, setResult
             games::mapman::branmap[match[1]].execute();
 
             target->branches.push_back(new_ivect);

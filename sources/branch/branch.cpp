@@ -18,6 +18,7 @@ bool games::branch::build(const std::string& line) {
             games::mapman::branmap[match[1]].setObject(backup_object);
             games::mapman::branmap[match[1]].setArgs(backup_string);
             games::mapman::branmap[match[1]].setResult(backup_result);
+            return true;
         }
         else {
             std::cout << "[e] Fatal error while building branch " << line << std::endl;

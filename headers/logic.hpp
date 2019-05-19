@@ -11,6 +11,10 @@
 #include "initman.hpp"
 #include "cmdman.hpp"
 
+// TODO: Input script call
+// TODO: Display script call
+// TODO: prerequisites for these are iteration classes UGH
+
 namespace games {
     class logic {
         friend class games::mapman;

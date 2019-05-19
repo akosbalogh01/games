@@ -62,3 +62,14 @@ bool games::statfunc::exit(void* object, const std::string& input, void* unused2
 
     return false;
 }
+
+bool games::statfunc::start(void* object, const std::string& input, void* unused) {
+    if (std::regex_match(input, std::regex("(start)"))) {
+        games::initman* target = (games::initman*) object;
+        target->main();
+        return true;
+    }
+
+    return false;
+}
+

@@ -1,5 +1,10 @@
 #include "initman.hpp"
+#include "mapman.hpp"
 
 void games::initman::init() {
-    vinstvector.execute();
+    games::mapman::funvmap["INIT"].execute();
+}
+
+void games::initman::main() {
+    games::mapman::funvmap["MAIN"].execute();
 }

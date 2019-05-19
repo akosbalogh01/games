@@ -3,9 +3,10 @@
 #include <memory>
 #include <iostream>
 #include "scriptman.hpp"
+#include "stackman.hpp"
 #include "interfaces.hpp"
 
-const std::shared_ptr <games::instruction> games::scriptman::parse_instr(void* object, const std::string& line) {
+bool games::scriptman::parse_instr(void* object, const std::string& line) {
     std::smatch match;
     if (std::regex_match(line, match, std::regex("(.*?)(\\[)(.*?)(\\];)"))) {
         if (games::stackman::insvstack.size() != 0) {
@@ -15,13 +16,14 @@ const std::shared_ptr <games::instruction> games::scriptman::parse_instr(void* o
                 auto new_instruction = std::make_shared <games::instruction>(games::mapman::funcmap[match[1]]);
                 if (new_instruction.get()->object() == nullptr) new_instruction.get()->setObject(object);
                 new_instruction.get()->setArgs(line);
-                return new_instruction;
+                games::stackman::insvstack.back().get()->add(new_instruction);
+                return true;
             }
             else if (search2 != games::mapman::funvmap.end()) {
-                // TODO: define instruction to call instr vector
-                //auto new_instrvect = std::make_shared <games::instrvector>(games::mapman::funvmap[match[1]]);
-                //new_instrvect.get()-> anything to be set?
-                //return new_instrvect;
+                // TODO: define instruction to call instr vector - is this even working? apparently it does, dunno how :DD
+                std::shared_ptr <interfaces::executable> new_funccall = std::make_shared <games::instrvector>(games::mapman::funvmap[match[1]]);
+                games::stackman::insvstack.back().get()->add(new_funccall);
+                return true;
             }
             else {
                 std::cout << "[e] Fatal error: unparsable line " << line << std::endl;
@@ -35,5 +37,5 @@ const std::shared_ptr <games::instruction> games::scriptman::parse_instr(void* o
     }
 
     assert(0);
-    return nullptr;
+    return false;
 }

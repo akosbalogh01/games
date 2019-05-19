@@ -8,6 +8,8 @@ namespace games {
         bool parsedeffun(void*, const std::string&, void*);
         bool writeconsole(void*, const std::string&, void*);
         bool exit(void*, const std::string&, void*);
+        bool call(void*, const std::string&, void*);
+        bool start(void*, const std::string&, void*);
 
         bool createpawn(void*, const std::string&, void*);
         bool setpawnpos(void*, const std::string&, void*);

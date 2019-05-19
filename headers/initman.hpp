@@ -8,12 +8,14 @@ namespace games {
     class initman {
     private:
         std::vector <std::string> vinitscript;
-        games::instrvector vinstvector;
+        std::vector <std::string> vmainscript;
 
     public:
         bool loadInitScript(const std::string&);
+        bool loadMainScript(const std::string&);
 
         void init();
+        void main();
     };
 };
 

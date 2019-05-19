@@ -31,7 +31,7 @@ namespace games {
         static std::map <std::string, games::instrvector> funvmap;
         static std::map <std::string, unsigned int>       varimap;
         static std::map <std::string, void*> membmap;
-        static std::map <std::string, void*> vectmap;
+        static std::map <std::string, const void*> vectmap;
     };
 };
 

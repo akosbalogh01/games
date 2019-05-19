@@ -10,14 +10,15 @@ void games::logic::loadConfig(const std::string& filepath) {
     logic_moves = 0;
     logic_valid = logic_running = true;
 
+    games::mapman::varimap["test1"] = 5;
+    games::mapman::varimap["test2"] = 10;
+
     logic_gfx.loadRenderVector(logic_inifile.value("Graphics", "table"));
     logic_gfx.loadCharacterVector(logic_inifile.value("Graphics", "charmap"));
     logic_pawnman.setCharmap(logic_gfx.charmap());
-    //logic_pawnman.loadPawns(logic_inifile.value("Game", "pawns"));
-    //logic_pawnman.initPawns(logic_inifile.value("Game", "initscript"));
 
-    //logic_pawnman.initMoves(logic_inifile.get()->value("Game", "movescript"));
     logic_initman.loadInitScript(logic_inifile.value("Game", "initscript"));
-    //logic_mapman.funvmap["INIT"].execute();
     logic_initman.init();
+
+    logic_initman.loadMainScript(logic_inifile.value("Game", "logiscript"));
 }
