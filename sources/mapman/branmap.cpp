@@ -15,5 +15,4 @@ void games::mapman::init_branmap() {
 
     branmap["CONDITION"]    = games::instruction(nullptr, funtype (games::statfunc::branch::bcond));
     branmap["CONDITIONSET"] = games::instruction(nullptr, funtype (games::statfunc::branch::bconv));
-    branmap["FOREACH"]      = games::instruction(nullptr, funtype (games::statfunc::branch::foreach));
 }

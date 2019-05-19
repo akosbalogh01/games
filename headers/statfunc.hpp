@@ -46,6 +46,10 @@ namespace games {
             bool dismove(void*, const std::string&, void*);
             bool enamove(void*, const std::string&, void*);
         };
+
+        namespace iter {
+            bool foreach(void*, const std::string&, void*);
+        };
     };
 };
 

@@ -14,6 +14,8 @@ void games::mapman::init_funcmap() {
     funcmap["WRITECONSOLE"] = games::instruction(nullptr, funtype (games::statfunc::writeconsole));
     funcmap["EXIT"]         = games::instruction(membmap["LOGIC"], funtype (games::statfunc::exit));
 
+    funcmap["FOREACH"]      = games::instruction(nullptr, funtype (games::statfunc::iter::foreach));
+
     funcmap["CREATEPAWN"]   = games::instruction(membmap["PAWNMAN"], funtype (games::statfunc::createpawn));
     funcmap["SETPAWNPOS"]   = games::instruction(membmap["PAWNMAN"], funtype (games::statfunc::setpawnpos));
     funcmap["DEFINEMOVE"]   = games::instruction(membmap["PAWNMAN"], funtype (games::statfunc::moves::defmove));

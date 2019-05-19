@@ -24,12 +24,18 @@ bool games::scriptman::parse_end(const std::string& line) {
                 return true;
             }
         }
+        else if (match[2].compare("FOREACH") == 0) {
+            std::cout << "[i] Ending for each iteration" << std::endl;
+            games::stackman::insvstack.pop_back();
+            return true;
+        }
         else {
             auto search = games::mapman::funvmap.find(match[2]);
             if (search != games::mapman::funvmap.end()) {
                 std::cout << "[i] Ending function '" << match[2] << "'" << std::endl;
                 games::mapman::funvmap[match[2]] = *games::stackman::insvstack.back().get();
                 games::stackman::insvstack.pop_back();
+                return true;
             }
             else {
                 std::cout << "[e] Fatal error: unparsable line " << line << std::endl;

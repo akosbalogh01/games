@@ -11,6 +11,8 @@ namespace games {
         std::shared_ptr <games::instrvector> vinstr;
 
     public:
+        foreach(const std::string& p1, const std::string& p2): iteration(p1), viter(p2) {}
+
         void execute();
 
         void setIterator(const std::string&);

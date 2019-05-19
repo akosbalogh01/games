@@ -11,6 +11,8 @@ namespace games {
         std::string vtarget;
 
     public:
+        iteration(const std::string& param): vtarget(param) {}
+
         virtual void setTarget(const std::string&);
         virtual std::string target() const;
 
